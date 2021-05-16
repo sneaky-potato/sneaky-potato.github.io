@@ -1,0 +1,130 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.5s;
+}
+.card .card-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'Abel', sans-serif;
+    font-size: 1.3em;
+}
+.card .card-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card .card-desc{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+.card .card-img {
+    min-height: 100px;
+}
+.card:hover {
+    transform: translate3D(0,-1px,0) scale(1.1);
+}
+.card .price {
+    color: darkgreen;
+    font-weight: bold;
+}
+.card .chikn-masala-img{
+    background: url(./card-img/chkn-masala.jpg);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card .pasta-img{
+    background: url(./card-img/pasta.jpg);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card .hkka-img{
+    background: url(./card-img/hkka-nudles.jpg);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card .shahi-img{
+    background: url(./card-img/shahi-paneer.jpg);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card .card-desc {
+    padding: 5px;
+    visibility: hidden;
+}
+.card .card-desc{
+    transition: all 0.3s;
+}
+.card:hover .card-desc{
+    opacity: 1;
+    visibility: visible;
+}
+
+.card .card-title .card-sign {
+    background: url(./card-img/non-veg.png);
+    width: 20%;
+    height: 35px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+.card .card-btn .add {
+    padding: 5px;
+    color: cornsilk;
+    background: rgb(109, 32, 32);
+    border-radius: 7px;
+    transition: all 0.5s;
+}
+.card .card-btn .add:after{
+    content: 'Add';
+    display: block;
+ }
+ /* .card .card-btn .add:hover:after, */
+ .card .card-btn .add:focus:after,
+ .card .card-btn .add:active:after{
+    content: 'Added';
+    display: block;
+ }
+ .card .card-btn .add:active{
+     background: green;
+ }
+.card .card-btn .price{
+    opacity: 0;
+}
+.card .card-btn .price {
+    transition: all 0.2s;
+}
+.card .discount {
+    transition: all 0.2s;
+}
+.card:hover .price{
+    opacity: 1;
+}
+.card:hover .discount {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
