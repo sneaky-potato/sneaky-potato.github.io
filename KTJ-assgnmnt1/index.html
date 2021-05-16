@@ -1,1 +1,229 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type = "text/css" href="style.css">
+    <link rel="stylesheet" type = "text/css" href="card.css">
+    <link rel="stylesheet" type = "text/css" href="review.css">
+    <link rel="stylesheet" type = "text/css" href="footer.css">
+    <link rel="shortcut icon" href="./favicon/logo.ico" type="image/x-icon">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
+    crossorigin="anonymous" />
+    <title>Cap'n Cododo Restaurant</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+    </style>
+</head>
+<body>
+    <nav class = "navbar" style="z-index: 100;">
+        <div class="logo">
+            <div class="icon"><img src="logo.png"/></div>
+            <div class="name">Cap'n Cododo</div>
+        </div>
+        <ul>
+            <li><a href = "#Intro">Home</a></li>
+            <li><a href="#special">Specialities</a></li>
+            <li><a href="#recommend">Recommendations</a></li>
+            <li><a href="#review">Reviews</a></li>
+        </ul>
+    </nav>
+    <div class="Intro" id = "Intro">
+        <div class="subtitle">
+            <div>
+            Cap'n Cododo at yer service mates.
+            </div> 
+            <hr>
+            Ahoy it's grub time!  
+            <a class = "main-btn" href = "#special">Check out Specialities</a>  
+            <i class="fas fa-angle-down" style="transition: all .3s;"></i>   
+        </div>
+        <div class="banner">
+        </div>
+    </div>
+    <div class="Specialities" id="special">
+        <div class="special-title">
+            Our Specialities
+        </div>
+        <div class="row">
+            <div class="column">
+              <div class="card">
+                  <div class="card-title">
+                      <div class="card-name">Chicken Masala</div>
+                      <div class="card-sign"></div>
+                  </div>
+                  <div class="card-img chikn-masala-img"></div>
+                  <div class="card-desc">It is chicken with MDH masala</div>
+                  <div class="card-btn">
+                      <button class="add"></button>
+                      <div class="price">Rs 2000</div>
+                      <div class="discount">Rs 5000</div>
+                  </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="card-name">Pasta</div>
+                        <div class="card-sign"></div>
+                    </div>
+                    <div class="card-img pasta-img"></div>
+                    <div class="card-desc">From the kitchen of Italy</div>
+                    <div class="card-btn">
+                        <button class="add"></button>
+                        <div class="price">Rs 2000</div>
+                        <div class="discount">Rs 5000</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="card-name">Hakka Noodles</div>
+                        <div class="card-sign"></div>
+                    </div>
+                    <div class="card-img hkka-img"></div>
+                    <div class="card-desc">Perhaps a chinese dish</div>
+                    <div class="card-btn">
+                        <button class="add"></button>
+                        <div class="price">Rs 2000</div>
+                        <div class="discount">Rs 5000</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="card-name">Shahi Paneer</div>
+                        <div class="card-sign"></div>
+                    </div>
+                    <div class="card-img shahi-img"></div>
+                    <div class="card-desc">Spicy Indian cuisine yeet</div>
+                    <div class="card-btn">
+                        <button class="add"></button>
+                        <div class="price">Rs 2000</div>
+                        <div class="discount">Rs 5000</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+    <div class="Review" id="review">
+        <div class="special-title" style="text-align: center;">
+            Our Reviews
+        </div>
+        <div class="review-bar">
+            <div class="row">
+                <div class="column">
+                    <div class="card slide" style="z-index: 0;">
+                        <div class="card-img cj"></div>
+                        <div class="card-title">
+                            <div class="card-name">Carl Johnson</div>
+                        </div>
+                        <div class="mask" style="z-index: -1;">Yo my niggas eat here</div>
+                        <div class="card-review">
+                            <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                            <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+            </div>
+            <div class="column">
+                <div class="card slide" style="z-index: 0;">
+                    <div class="card-img doge"></div>
+                    <div class="card-title">
+                        <div class="card-name">Doge</div>
+                    </div>
+                    <div class="mask" style="z-index: -1;">I love bones of chef</div>
+                    <div class="card-review">
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card slide" style="z-index: 0;">
+                    <div class="card-img ben10"></div>
+                    <div class="card-title">
+                        <div class="card-name">Ben 10</div>
+                    </div>
+                    <div class="mask" style="z-index: -1;">It's Food time not hero time</div>
+                    <div class="card-review">
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                        <i class="fa fa-star checked" style="color: rgb(168, 40, 40);"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+        <form action="#" class="rev-form">
+            <div>
+                Take a moment to write a review
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="firstname" placeholder="Your name..">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="abc@xyz.com">
+            </div>
+            <div>
+                <label for="review">Review</label>
+                <textarea name="paragraph_text" cols="50" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="stars">Rate out of 5</label>
+                <select id="stars" name="stars">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="2">3</option>
+                    <option value="2">4</option>
+                    <option value="2">5</option>
+            </select>
+            </div>
+            <input type="submit" value="Submit" style="width: 30%; display: flex; align-items: center; justify-content: center;font-family: monospace;
+            font-size: 20px;">
+          </form>
+        </div>
+        </div>
+    </div>
+    <div class="foot-container">
+        <div class="backtotop">
+            <a href="#Intro"><i class="fas fa-chevron-up"></i></a>
+        </div>
+        <div class="footer">
+            <div class="social">
+                <i class="fab fa-facebook"><a href="#" target="_blank"></a></i>
+                <i class="fab fa-instagram"><a href="#" target="_blank"></a></i>
+                <i class="fab fa-twitter"><a href="#" target="_blank"></a></i>
+            </div>
+            <div class="link">
+                <div class="terms">
+                    <a href="#" target="_blank">Terms and Conditions</a>
+                </div>
+                <div class="privacy"><a href="#" target="_blank"> | Privacy Policy</a></div>
+            </div>
+            <hr>
+            
+            <div class="copyright"><i class="far fa-copyright"></i><a href="#" target="_blank">  Copyright Information</a></div>
+        </div>
+        <div class="backtotop">
+            <a href="#Intro"><i class="fas fa-chevron-up"></i></a>
+        </div>
+    </div>
+    
+</body>
+</html>
