@@ -1,0 +1,120 @@
+.Review .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.Review {
+    background: linear-gradient(to right, #663a18 0, #000000 50%, #663a18 100%); 
+}
+
+.card .cj{
+    background: url(./card-img/cj.png);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card .doge{
+    background: url(./card-img/doge.jpg);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card .ben10{
+    background: url(./card-img/ben10.jpg);
+    margin-top: 10px;
+    width: 100%;
+    height: 150px;
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.Review .review-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.Review .review-bar .row {
+    width: 50%;
+}
+.Review .review-bar .row .column {
+    width: fit-content;
+}
+.mask {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 10px 5px 10px 5px;
+    position: absolute;
+    top:0;
+    left:0;
+    border-radius: inherit;
+    background: #f1f1f1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: maroon;
+    width: 100%;
+    height: 100%;
+    opacity: 0;;
+}
+.slide:hover .mask {
+    height: 120%;
+    opacity: 1;
+}
+.mask {
+    transition: all 0.3s;
+}
+.rev-form {
+    display: flex;
+    flex-direction: column;
+    background: rgb(131, 24, 24);
+    color: rgb(255, 255, 255);
+    border-radius: 3px;
+
+}
+.rev-form div {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 10px 5px 10px 5px;
+    font-family: monospace;
+    font-size: 20px;
+}
+@media screen and (max-width: 800px) {
+    .Review .review-bar {
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      align-items: center;
+      width: 100%;
+    }
+    .Review .review-bar .row {
+        display: flex;
+      flex-direction: column;
+      justify-self: center;
+      align-items: center;
+      width: 100%;
+    }
+    .Review .review-bar .card {
+        width: 100%;
+    }
+    .Review .review-bar .column{
+        width: 80%;
+    }
+    .mask {
+        align-items: center;
+        justify-content: center;
+    }
+    .slide:hover .mask {
+        transform: translateX(100%);
+        height: 100%;
+        opacity: 1;
+    }
+}
