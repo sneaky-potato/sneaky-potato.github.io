@@ -6,23 +6,25 @@
     <description>Recent content on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Nov 2021 00:55:00 +0530</lastBuildDate><atom:link href="https://sneaky-potato.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://sneaky-potato.github.io/posts/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>My Dynamic Duo</title>
+      <link>https://sneaky-potato.github.io/posts/dynamic-duo/</link>
+      <pubDate>Wed, 10 Nov 2021 00:55:00 +0530</pubDate>
       
-      <guid>https://sneaky-potato.github.io/posts/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      <guid>https://sneaky-potato.github.io/posts/dynamic-duo/</guid>
+      <description>When it comes to building / learning stuff one can never and should never forget the tools which led them to tangible feat. Things get real serious when those tools happen to be the very same dark-shiny-squarish boxes which filled your eyes with a childish glossom (maybe?) when they arrived. (I mean, I have my algorithms lab tomorrow and I&amp;rsquo;m still writing this blog, c&amp;rsquo;mon man it&amp;rsquo;s dead serious)
+June 2013I was in sixth grade when that large alien box arrived.</description>
     </item>
     
     <item>
-      <title>External Page: Hugo Coder Wiki</title>
-      <link>https://sneaky-potato.github.io/posts/hugo-coder-wiki/</link>
-      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Hello World</title>
+      <link>https://sneaky-potato.github.io/posts/my-first-post/</link>
+      <pubDate>Mon, 01 Nov 2021 00:55:00 +0530</pubDate>
       
-      <guid>https://sneaky-potato.github.io/posts/hugo-coder-wiki/</guid>
-      <description></description>
+      <guid>https://sneaky-potato.github.io/posts/my-first-post/</guid>
+      <description>Yeah yeah, made a website using Hugo, started posting blogs on it, da very definition of cliche ig? :P
+I&amp;rsquo;l try my best to make the content non cliche atleast so please bear with my nagging :x</description>
     </item>
     
   </channel>

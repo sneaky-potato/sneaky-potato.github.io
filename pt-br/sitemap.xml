@@ -2,63 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sneaky-potato.github.io/pt-br/categories/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/categories/"
-                />
-  </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/tags/css/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/tags/css/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/tags/css/"
-                />
-  </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/posts/markdown-syntax/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/posts/markdown-syntax/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/posts/markdown-syntax/"
-                />
-  </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/series/guia-do-thema/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/tags/html/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/tags/html/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/tags/html/"
-                />
+    <loc>https://sneaky-potato.github.io/pt-br/posts/rich-content/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -70,21 +18,8 @@
                 href="https://sneaky-potato.github.io/pt-br/"
                 />
   </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/tags/markdown/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/tags/markdown/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/tags/markdown/"
-                />
-  </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/posts/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -96,24 +31,14 @@
                 href="https://sneaky-potato.github.io/pt-br/posts/"
                 />
   </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/series/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/series/"
-                />
+    <loc>https://sneaky-potato.github.io/pt-br/tags/privacy/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/categories/sintaxe/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://sneaky-potato.github.io/pt-br/tags/shortcodes/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/tags/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -125,73 +50,54 @@
                 href="https://sneaky-potato.github.io/pt-br/tags/"
                 />
   </url><url>
-    <loc>https://sneaky-potato.github.io/pt-br/categories/temas/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://sneaky-potato.github.io/pt-br/posts/more-rich-content/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/tags/markdown/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/tags/text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/posts/placeholder-text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/posts/math-typesetting/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/tags/emoji/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/posts/emoji-support/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/categories/</loc>
+    <lastmod>2019-03-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sneaky-potato.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="https://sneaky-potato.github.io/pt-br/categories/"
+                />
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/categories/development/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/categories/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/categories/development/"
-                />
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/tags/development/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/tags/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/tags/development/"
-                />
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/tags/hugo/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/tags/hugo/"
-                />
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/posts/hugo-coder-wiki/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/posts/hugo-coder-wiki/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/posts/hugo-coder-wiki/"
-                />
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/tags/themes/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sneaky-potato.github.io/tags/themes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="https://sneaky-potato.github.io/pt-br/tags/themes/"
-                />
   </url><url>
     <loc>https://sneaky-potato.github.io/pt-br/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
@@ -240,6 +146,18 @@
                 rel="alternate"
                 hreflang="pt-br"
                 href="https://sneaky-potato.github.io/pt-br/projects/"
+                />
+  </url><url>
+    <loc>https://sneaky-potato.github.io/pt-br/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sneaky-potato.github.io/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="https://sneaky-potato.github.io/pt-br/series/"
                 />
   </url>
 </urlset>
