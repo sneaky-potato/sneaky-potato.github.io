@@ -6,6 +6,7 @@ description = "Uma breve descrição sobre Shortcodes customizados do Hugo Coder
 tags = [
     "shortcodes"
 ]
+draft = true
 +++
 
 O Hugo Coder proporciona alguns Shortcodes Customizados.

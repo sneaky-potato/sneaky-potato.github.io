@@ -6,6 +6,7 @@ description = "A brief description about Hugo Coder's Custom Shortcodes"
 tags = [
     "shortcodes"
 ]
+draft = true
 +++
 
 Hugo Coder provides some Custom Shortcodes.

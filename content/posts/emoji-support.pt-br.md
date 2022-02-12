@@ -6,6 +6,7 @@ description = "Um guia de utilização de emojis com Hugo"
 tags = [
     "emoji",
 ]
+draft = true
 +++
 
 Emojis podem ser ativados em um projeto Hugo de diversar formas.

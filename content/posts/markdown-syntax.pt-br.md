@@ -14,6 +14,7 @@ categories = [
 ]
 series = ["Guia do Thema"]
 aliases = ["migrate-from-jekyl"]
+draft = true
 +++
 
 Esse artigo é um exemplo básico para mostrar a sintaxe Markdown que é usada nos arquivos de conteúdo do Hugo. Ele também mostrar como cada elemento básico HTML é estilizado com CSS com os temas do Hugo.

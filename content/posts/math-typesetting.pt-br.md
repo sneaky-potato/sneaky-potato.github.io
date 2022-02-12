@@ -4,6 +4,7 @@ title: Configuração de Equações Matemáticas
 date: 2019-03-08
 description: Um guia rápido sobre utilizar KaTeX
 math: true
+draft: true
 ---
 
 Em um projeto Hugo as Notações Matemáticas podem ser usadas com a ajuda de bibliotecas JavaScript de terceiros.

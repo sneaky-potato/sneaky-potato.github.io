@@ -7,6 +7,7 @@ tags = [
     "emoji",
 ]
 enableEmoji = true
+draft = true
 +++
 
 Emoji can be enabled in a Hugo project in a number of ways.
