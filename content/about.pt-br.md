@@ -12,4 +12,4 @@ I_'\/3 \/\/0rk3d i n fr0nt3nd d3\/3i0pm3nt A|\|D 4 Ha\/3 |ɔ3ginn3r ta$t3 i n |�
  
 ln my fr33 tim3 y0u'd pr0|ɔa|ɔiy find m3 \/\/atching $0m3 anim3 $3ri3$. 
  
-4t th3 tim3 0f \/\/riting 0f thi$ pag3, I_ am 0n [3im0n](https://google.com) running p0p 0$
+4t th3 tim3 0f \/\/riting 0f thi$ pag3, I_ am 0n [3im0n]({{.Site.baseURL}}/posts/my-dynamic-duo/) running p0p 0$
