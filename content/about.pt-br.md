@@ -6,20 +6,10 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "Hugo Authors"
 +++
 
-Escrito em Go, Hugo é um gerador de sites estáticos de código aberto disponível sobre a licença [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) O Hugo suporta TOML, YAML e JSON como arquivos de dados, Markdown e HTML como arquivos de conteúdo, e usa shortcodes para adicionar conteúdos ricos. Outras funcionalidades notaveis são taxonomias, modo multilingual, processamento de imagens, formatos de saída customizaveis, minificação de HTML/CSS/JS e suporte a fluxos SASS/SCSS.
-
-O Hugo faz o uso de vários projetos de código aberto incluíndo:
-
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
-
-O Hugo é ideal para blogs, sites corporativos, protfólio criativos, revistas online, aplicações de página única ou até sites com milhares de páginas.
-
-O Hugo é para pessoas que querem cuidar do seu próprio site sem se preocupar com a configuração ambientes complicados, dependências e bancos de dados.
-
-Sites contru;idos com Hugo são extremamente rápidos, seguros e podem ser implantados em qualquer lugar, incluíndo AWS, GitHub Pages, Heroku, Netlify e outros provedores de hospedagem.
-
-Saiba mais e contribua em [GitHub](https://github.com/gohugoio).
+ |-|i th3r3, y0u ar3 curr3ntiy Ha\/ing 4 0n3-$id3d-t3xtuai-pr0|ɔa|ɔiy-m0n0t0n0u$-taiK \/\/itH m3 thr0ugH thi$ pag3. 4$ th3 titi3 dictat3$, i 3t m3 i ntr0duc3 my$3if. |\/|y nam3 l$ 4$h\/\/ani Kumar Kamai. I_'m 4 $3c0nd y3ar und3rgraduat3 $tud3nt fr0m th3 d3partm3nt 0f c0mput3r $ci3nc3 A|\|D 3ngin33ring 4T lndian ln$titut3 0f t3chn0i0gy, Kharagpur. 
+ 
+I_'\/3 \/\/0rk3d i n fr0nt3nd d3\/3i0pm3nt A|\|D 4 Ha\/3 |ɔ3ginn3r ta$t3 i n |ɔack3nd d3\/3i0pm3nt. I_'\/3 d0n3 c0ur$3$ 0n lmag3 pr0c3$$ing A|\|D |ɔ33p i _3arning. 
+ 
+ln my fr33 tim3 y0u'd pr0|ɔa|ɔiy find m3 \/\/atching $0m3 anim3 $3ri3$. 
+ 
+4t th3 tim3 0f \/\/riting 0f thi$ pag3, I_ am 0n [3im0n](https://google.com) running p0p 0$

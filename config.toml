@@ -19,11 +19,15 @@ info = ["Majoring in", "Computer Science and Engineering"]
 avatarURL = "images/sneak.png"
 #gravatar = "john.doe@example.com"
 dateFormat = "January 2, 2006"
-since = 2020
+since = 2021
 # Git Commit in Footer, uncomment the line below to enable it
-commit = "https://github.com/luizdepra/hugo-coder/tree/"
+# commit = "https://github.com/luizdepra/hugo-coder/tree/"
 # Right To Left, shift content direction for languagues such as Arabic
 rtl = false
+
+# Math typesetting Katex
+math = true
+
 # Specify light/dark colorscheme
 # Supported values:
 # "auto" (use preference set by browser)
@@ -119,7 +123,7 @@ url = "https://www.linkedin.com/in/ashwani-k-kamal/"
 
 [[params.social]]
 name = "Mail"
-icon = "fa fa-2x fa-google"
+icon = "fa fa-2x fa-envelope"
 weight = 3
 url = "mailto:rajivkamal.im421@gmail.com"
 

@@ -6,20 +6,10 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "Hugo Authors"
 +++
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+Hi there, you are currently having a one-sided-textual-probably-monotonous-talk with me through this page. As the title dictates, let me introduce myself. My name is Ashwani Kumar Kamal. I'm a second year undergraduate student from the department of Computer Science and Engineering at Indian Institute of Technology, Kharagpur.  
 
-Hugo makes use of a variety of open source projects including:
+I've worked in frontend development and a have beginner taste in backend development. I've done courses on Image processing and Deep Learning.  
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+In my free time you'd probably find me watching some anime series.   
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
-
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
-
-Websites built with Hugo are extremely fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+At the time of writing of this page, I am on [Elmon](https://google.com) running Pop OS
