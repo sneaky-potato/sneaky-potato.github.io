@@ -1,4 +1,5 @@
-baseURL = "https://sneaky-potato.github.io"
+relativeURLs = true
+# baseURL = "."
 title = "sneaky potato"
 theme = "hugo-coder"
 languageCode = "en"
