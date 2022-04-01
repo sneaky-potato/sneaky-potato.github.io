@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sneaky potato</title>
+    <link>/</link>
+    <description>Recent content on sneaky potato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 10 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Dynamic Duo</title>
+      <link>/posts/my-dynamic-duo/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/my-dynamic-duo/</guid>
+      <description>Disclaimer: This post is absolutely not about my butt curves. Now let’s start this thing off with a boring-made-up quote
+ When it comes to building / learning stuff one can never and should never forget the tools which led them to tangible feat. Things get real serious when those tools happen to be the very same dark-shiny-squarish boxes which filled your eyes with a childish glossom (maybe?) when they arrived.</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>/posts/hello-world/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/hello-world/</guid>
+      <description>Yeah yeah, made a website using Hugo, started posting blogs on it, da very definition of cliche ig? :P I’ll try my best to make the content a little interesting atleast so please bear with my nagging :x</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Hi there, you are currently having a one-sided-textual-probably-monotonous-(tryhard?)-talk with me through this page. As the title dictates, let me introduce myself. My name is Ashwani Kumar Kamal. I&amp;rsquo;m a second year undergraduate student from the department of Computer Science and Engineering at Indian Institute of Technology, Kharagpur.
+I&amp;rsquo;ve worked in frontend development and have a beginner taste in backend development. I&amp;rsquo;ve done courses on Image processing and Deep Learning.
+In my free time you&amp;rsquo;d probably find me watching some anime series.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>Come to Papa</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/</guid>
+      <description>void</description>
+    </item>
+    
+  </channel>
+</rss>

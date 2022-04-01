@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unga Bunga</title>
+    <link>/pt-br/</link>
+    <description>Recent content on Unga Bunga</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="/pt-br/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>/pt-br/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/pt-br/about/</guid>
+      <description>|-|i th3r3, y0u ar3 curr3ntiy Ha/ing 4 0n3-$id3d-t3xtuai-pr0|ɔa|ɔiy-m0n0t0n0u$-taiK //itH m3 thr0ugH thi$ pag3. 4$ th3 titi3 dictat3$, i 3t m3 i ntr0duc3 my$3if. |/|y nam3 l$ 4$h//ani Kumar Kamai. I_&amp;rsquo;m 4 $3c0nd y3ar und3rgraduat3 $tud3nt fr0m th3 d3partm3nt 0f c0mput3r $ci3nc3 A||D 3ngin33ring 4T lndian ln$titut3 0f t3chn0i0gy, Kharagpur.
+I_&amp;rsquo;/3 //0rk3d i n fr0nt3nd d3/3i0pm3nt A||D 4 Ha/3 |ɔ3ginn3r ta$t3 i n |ɔack3nd d3/3i0pm3nt. I_&amp;rsquo;/3 d0n3 c0ur$3$ 0n lmag3 pr0c3$$ing A||D |ɔ33p i _3arning.</description>
+    </item>
+    
+    <item>
+      <title>Contato</title>
+      <link>/pt-br/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/pt-br/contact/</guid>
+      <description>Jaldi</description>
+    </item>
+    
+    <item>
+      <title>Projetos</title>
+      <link>/pt-br/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/pt-br/projects/</guid>
+      <description>void 2.0</description>
+    </item>
+    
+  </channel>
+</rss>

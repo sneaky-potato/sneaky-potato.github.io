@@ -3,7 +3,7 @@ name: take-off
 on:
   push:
     branches:
-      - reboot  # Set a branch to deploy
+      - fix/css  # Set a branch to deploy
   pull_request:
 
 jobs:
