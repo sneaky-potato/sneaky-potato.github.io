@@ -28,7 +28,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.TOKEN }}
-          external_repository: <username>/<username>.github.io
+          external_repository: sneaky-potato/sneaky-potato.github.io
           publish_dir: ./public
           #   keep_files: true
           publish_branch: gh-pages
