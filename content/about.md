@@ -13,4 +13,4 @@ I've worked in frontend development and have a beginner taste in backend develop
 
 In my free time you'd probably find me watching some anime series.
 
-At the time of writing of this page, I am on [Elmon](https://sneakypotato.live/posts/my-dynamic-duo) running Pop OS
+At the time of writing of this page, I am on [Elmon](https://sneaky-potato.ml/blog/my-dynamic-duo) running Pop OS
