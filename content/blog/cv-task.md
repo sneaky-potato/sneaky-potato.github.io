@@ -15,7 +15,7 @@ A breif version of the problem-
 
 ```blah blah blah- work in progress```
 {{< alert >}}
-**WARNING**: Proceed ahead only after you're ready for the solution (after giving the problem some thought) and are already familiar with the basics od image processing and Computer Vision
+**WARNING**: Proceed ahead only after you're ready for the solution (after giving the problem some thought) and are already familiar with the basics of image processing and Computer Vision
 {{< /alert >}}
 
 ```blah blah blah- work in progress```

@@ -11,4 +11,4 @@ I've worked in both frontend and  backend development. I've done courses on Imag
 
 In my free time you'd probably find me watching some anime series.
 
-At the time of writing of this page, I am on [Elmon](https://sneaky-potato.ml/blog/my-dynamic-duo) running Pop OS
+At the time of writing of this page, I am on [Elmon](https://sneaky-potato.ml/blog/my-dynamic-duo) running Pop OS.

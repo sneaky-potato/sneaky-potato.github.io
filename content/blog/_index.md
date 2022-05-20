@@ -11,6 +11,6 @@ cascade:
 A little insight into this potato's well-maintained, organised mess.
 {{< /lead >}}
 
-I've come to realize that expressing yout thoughts out loud does help most of the times :D
+I've come to realize that expressing your thoughts out (and loud) does help most of the times :D
 
 ---

@@ -19,6 +19,6 @@ An example-
 
 And ofc, there's a website dedicated to it [here](http://www.thedevilsdictionary.com/) so you can look it up whenever you want.  
 
-Also plase do drop in any good satirical literary pieces in the comments, I'll gladly take out time to read them.
+Also please do drop in any good satire literary pieces in the comments, I'll gladly take out time to read them.
 
 ---
