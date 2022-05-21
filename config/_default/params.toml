@@ -24,7 +24,7 @@ showScrollToTop = true
 [article]
   showDate = true
   showDateUpdated = false
-  showAuthor = true
+  showAuthor = false
   showBreadcrumbs = true
   showDraftLabel = true
   showEdit = false
@@ -36,7 +36,7 @@ showScrollToTop = true
   showReadingTime = true
   showTableOfContents = true
   showTaxonomies = false
-  showWordCount = false
+  showWordCount = true
   # sharingLinks = ["facebook", "twitter", "pinterest", "reddit", "linkedin", "email"]
 
 [list]
