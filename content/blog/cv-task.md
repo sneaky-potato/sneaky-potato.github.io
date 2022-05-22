@@ -2,7 +2,7 @@
 title: "A Computer Vision Problem"
 date: 2022-03-05
 description: "CV Task given as an assignemnt in ARK"
-tags: ["strategy", "lifestyle"]
+tags: ["tech"]
 ---
 
 {{< lead >}}
