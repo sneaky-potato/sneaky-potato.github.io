@@ -4,6 +4,10 @@
 
 Repository for personal webiste
 
+## Theme
+
+Using the awesome [Congo](https://jpanther.github.io/congo/) theme built for Hugo.
+
 ## Website structure
 
 Just open it and see for yourself?
