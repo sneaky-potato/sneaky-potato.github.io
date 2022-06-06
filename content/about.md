@@ -13,13 +13,13 @@ You are currently having a one-sided-textual-probably-monotonous-(tryhard?)-talk
 
 *(Not one-sided anymore, thanks to [utterances](https://utteranc.es/), feel free to comment on this or any of my posts that you find interesting. **Dire** need of some activity here :P)*
 
-My name is **Ashwani Kumar Kamal**. I'm a second year undergraduate student from the department of **Computer Science and Engineering** at **Indian Institute of Technology, Kharagpur**.  
+I'm a second year undergraduate student from the department of **Computer Science and Engineering** at **Indian Institute of Technology, Kharagpur**.  
 
-I've worked in both frontend and  backend development. I've done courses on Image processing and Deep Learning.  
+In my free time you'd probably find me watching some anime series, reading some book or reading one of the blogs I follow.
 
-In my free time you'd probably find me watching some anime series or reading some book.
+If you're bored, let's have a chat. I'd absolutely enjoy your views (and would love to give you my views on your views), thoughts, experiences.
 
-At the time of writing of this page, I am on [Elmon](https://sneaky-potato.ml/blog/my-dynamic-duo) running **Pop OS**.
+At the time of writing of this page, I am on [Elmon](https://sneaky-potato.ml/blog/my-dynamic-duo) running **Pop OS**. (Although the page has been updated many times)
 
 <!-- {{< spotify type="album" id="5vqILcEeCT0N1DeJBsLrGE" width="100%" height="250" >}} -->
 
@@ -27,15 +27,10 @@ At the time of writing of this page, I am on [Elmon](https://sneaky-potato.ml/bl
 
 I love tinkering with stuff and code sometimes.
 
-Thanks to [Wakatime](https://wakatime.com/) I can track down my coding stats right from my IDE (which is **VS Code** currently) and monitor my time accordingly. The following chart shows division of time spent in each language that I've worked in, since I started using Wakatime.
+I like to think of my background bit like a pizza. The base is Mathematics, the sauce is Engineering and Computer Science, and the toppings, well, the toppings will depend on the project that I’m working on at the time.
 
-At the moment it displays as a dynamic SVG (yeah real time coding stats) provided by Wakatime itself but I'm making efforts to display it using [Chart.js](https://www.chartjs.org/)
-
-(using a pre-existing [chart shortcode](https://github.com/jpanther/congo/blob/dev/layouts/shortcodes/chart.html) in this theme I'm using. More on Hugo shortcodes- [here](https://gohugo.io/content-management/shortcodes/))
-
-{{< figure
-    src="https://wakatime.com/share/@sneaky_potato/04837fa6-7e5d-460d-9af5-8bd725321913.svg"
-    alt="Coding stats"
-    >}}
+I've worked in both frontend and  backend development. I've done courses on Image processing and Deep Learning. Also, recently started reading about software design patterns.
 
 My current OS is **Manjaro Linux**
+
+My GitHub [profile](https://github.com/sneaky-potato/) would be a more accurate representation of this section I guess.
