@@ -29,7 +29,7 @@ I love tinkering with stuff and code sometimes.
 
 I like to think of my background bit like a pizza. The base is Mathematics, the sauce is Engineering and Computer Science, and the toppings, well, the toppings will depend on the project that I’m working on at the time.
 
-I've worked in both frontend and  backend development. I've done courses on Image processing and Deep Learning. Also, recently started reading about software design patterns.
+I've worked in both frontend and  backend development. I've done courses on Image processing and Deep Learning. Also, recently I've started reading about software design patterns.
 
 My current OS is **Manjaro Linux**
 
