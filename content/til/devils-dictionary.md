@@ -14,8 +14,12 @@ That is, while looking for another book to add it to my overflowing stack of ```
 
 A satirical dictionary written by American journalist Ambrose Bierce, consisting of common words followed by humorous and satirical definitions, I'd say it is indeed a fine work of art.
 
-An example-
+Some examples-
 >YEAR, n. A period of three hundred and sixty-five disappointments.
+>
+>DOCTOR, n. A gentleman who thrives upon disease and dies of health.
+>
+>ENVELOPE, n. The coffin of a document; the scabbard of a bill; the husk of a remittance; the bed-gown of a love-letter.
 
 And ofc, there's a website dedicated to it [here](http://www.thedevilsdictionary.com/) so you can look it up whenever you want.  
 
