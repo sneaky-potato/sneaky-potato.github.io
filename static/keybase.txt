@@ -1,18 +1,74 @@
-Keybase proof
+==================================================================
+https://keybase.io/sneakypotato
+--------------------------------------------------------------------
+
 I hereby claim:
 
-- I am sneaky-potato on github (https://gist.github.com/sneaky-potato/6e311effc3986d79ee41b6bcd6632cad).
-- I am sneakypotato (https://keybase.io/sneakypotato) on keybase.
-- I own this (sneaky-potato.ml) domain.
-- I have a public key whose fingerprint is 4426 BAD2 3D42 426D 3CC8 6094 E80A AC83 B6DE 2228
+  * I am an admin of https://sneaky-potato.ml
+  * I am sneakypotato (https://keybase.io/sneakypotato) on keybase.
+  * I have a public key with fingerprint 4426 BAD2 3D42 426D 3CC8  6094 E80A AC83 B6DE 2228
 
-And finally, I am proving ownership of this domain by deploying this text file on this domain.
+To do so, I am signing this object:
 
-My publicly-auditable identity:
-https://keybase.io/sneakypotato
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101d8144598c8d77f37bacb414451c046d08d8b3a195a6b08e3773b78045738f4850a",
+      "fingerprint": "4426bad23d42426d3cc86094e80aac83b6de2228",
+      "host": "keybase.io",
+      "key_id": "e80aac83b6de2228",
+      "kid": "0101d8144598c8d77f37bacb414451c046d08d8b3a195a6b08e3773b78045738f4850a",
+      "uid": "e4be341bf82194ad9abf79c7ae657619",
+      "username": "sneakypotato"
+    },
+    "service": {
+      "hostname": "sneaky-potato.ml",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1656832329,
+  "expire_in": 157680000,
+  "prev": "7ff41cf9782eb8698f15c1a1911289ca93de863f008740cc06e8dcc399fbde5f",
+  "seqno": 6,
+  "tag": "signature"
+}
 
-From the command line:
-Consider the keybase command line program
+which yields the signature:
 
-# look me up
-keybase id sneakypotato
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNCAnicrVJrUFRlGF5uJXcMGjMr8ogkyNK5n+/sToGFEwsoA4LVZO2cy3fgxLpn
+3T1cViArxryQ5OhYBMESQ5SsE+SIRjoji4EO4WzTRSzALGaIhszZtgywonO0fjTT
+z74/3/e97/M87/O+834cG2aICpmNOtZw8gqyLuQTn6fSwPs2WGoRXhHdiKkWqYC3
+LmgToUu1VsgiYkJQDMVEgJEkxQIBiAwjEQzPCTyphzABJWkRBSLgCQ5jKY7mUQAJ
+hiF4BqAkxRBAIgGFckgGIsn2Muh0OGW7qsmSJE7znIgTIolrT5EQBECjLAkBynEC
+IHhahDiOA41Yrrh0hmaO51wwU1a0mPax3rL3H/j/2Xfl7TokDwkS4yWAYyzJiSzH
+SwwrMBykKYbGWB3ogk47tx1qaJcdchVuh6JyqoLUZyBapkoWoD5cvZt/oYy3YZnb
+bZqGw6moiqDYtGy5qjpcJp2tuh06vBry1r+FrLxsF7V5aowq6HTJih0xYRpSUGVd
+GaMpGhA4gbMZCKxxyE5olXWE5hSg2tHrwCpNkpEkEhMklgE45AHNAgmjBEybCIbh
+gBU4lhAhoAkJRQFDooKA0hCIgkCwrMSLkJIQvbUddgUx0ZpNrkxvSi6zc2qlEyL1
+Q75t4YaQKMMdEaH6nhmiIhP+2T5/UvxSwdiLX/n7X40t2TfdVbhFoR9+uqWmdPxa
+Gh0ef6i798Lk+8neemtf2OoZNmL+yOWg+WTcXWMtxqNEYGIxdf2dMRsdb56oPniA
+MjL+6VDKffrr1z6v+23/lcLGB+L74g/+6iP8QThVd9x0usTba53OTU1/dt7vufeX
+tz1ftA3bCuvq4mYuT9ONF9qyB/ONyQvnt856gt7o5YdbLYa7m7o9aUvvXr96XyCu
+b39e1rfS6NGInokdfVfbs4u8iZ3nEnsik4ZzH3U0zwUShhgx64/FyPGuh5ZP/sxK
+eysrlt4zZZXn0WeS4amznxo+e+6Hvg3d7T+mtK8vfqf4UCQaNmVvydnFjyTk/1RU
+tDJ3bm9VyO41vjnjM6D5pm88Z+d3tbM3e4nmR/a9MnLOS9+zcD3Q6vnm1Jog/vxb
+lujDuf2bNy3ahPamG1suvdCwEeaErL74Useyjwaf2hV7bGYgtN4X3upigk3K2Tlq
+5IkC+KU5j+sYSTmwdm2J2bAztff3mIHYqYHsPSmTpeGPX6pBPkDSMv8s8A4cN7vD
+7k+/lml5Mr1zQLQ2wBUUl7gsZ1PUy6E3pnYLvry6lRNn2G39NT2vT1rm88Wt66JX
+5SzZvu9yf9hWdmQ8o3f0DWdx0sWhWttCI0oGeL9a1Dk6Ju7pOLEi5kHz8KrKrNTB
+6sfOx3qNpZakwoTA5rLJvwAvi725
+=RoQq
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/sneakypotato
+
+==================================================================
