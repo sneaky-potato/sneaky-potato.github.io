@@ -1,0 +1,18 @@
+Keybase proof
+I hereby claim:
+
+- I am sneaky-potato on github (https://gist.github.com/sneaky-potato/6e311effc3986d79ee41b6bcd6632cad).
+- I am sneakypotato (https://keybase.io/sneakypotato) on keybase.
+- I own this (sneaky-potato.ml) domain.
+- I have a public key whose fingerprint is 4426 BAD2 3D42 426D 3CC8 6094 E80A AC83 B6DE 2228
+
+And finally, I am proving ownership of this domain by deploying this text file on this domain.
+
+My publicly-auditable identity:
+https://keybase.io/sneakypotato
+
+From the command line:
+Consider the keybase command line program
+
+# look me up
+keybase id sneakypotato
