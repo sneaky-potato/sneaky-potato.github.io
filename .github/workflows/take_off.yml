@@ -32,4 +32,4 @@ jobs:
           publish_dir: ./public
           #   keep_files: true
           publish_branch: gh-pages
-          cname: sneaky-potato.ml
+          # cname: sneaky-potato.ml
