@@ -11,7 +11,7 @@ tags: ["yes"]
 
 I act like normal people, almost everyday but then I relax a bit and do weird stuff. Idk, it feels like I'm the "normal" guy at that time.
 
-## Talos Principle
+## Why are you writing right now?
 
 >Must leave this information, else they won't be able to know. This is our only form of communication. The last hope.
 
@@ -34,12 +34,18 @@ Even I wouldn't expect myself to be this so descriptive lol. That's like too muc
   - Miss my then self (sem 4). I've changed
   - Lmaooo was thinking the same (sem 4 guy about online sem guy).
   - Just too many Deja Vu's than I can digest.
-  - non chalant behaviour
-  - I feel, we will forget about these, but, they are like, very normal things? So, why am I worried? Idk man, feels like the 0 guy will pay no heed to this.
+  - Non chalant behaviour
+  - I feel, I will forget about these, but, they are like, very normal things? So, why am I worried? Idk man, feels like the 0 guy will pay no heed to this.
   - Trips?- music trips, road trips, maggu trips?
 
 - Eventually everyting under control.
 - Apes together strong
+- The box not present, really wrong scale of things, social norms, confusion-
+  - Notion of normal things- historical facts and socially accepted acts (are not important)
+  - Cannot rely on these to judge my current time.
+  - Concept of present- you, are, writing the book. You, are, the new normal.
+  - Subjectivity
+  - I'll never know if I'm correct or not.
 
 ## Review by my other fellows
 
