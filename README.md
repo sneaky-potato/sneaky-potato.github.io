@@ -1,6 +1,6 @@
 # Little area for myself &middot;
 
->Wanting to exploit the easy deployment through [GitHub Pages](https://pages.github.com/) and content management using [Hugo](https://gohugo.io/), there I was, writing another one of my [TILs](https://sneaky-potato.ml/til/)
+>Wanting to exploit the easy deployment through [GitHub Pages](https://pages.github.com/) and content management using [Hugo](https://gohugo.io/), there I was, writing another one of my [TILs](https://sneaky-potato.github.io/til/)
 
 Repository for personal webiste
 
@@ -12,7 +12,7 @@ Using the awesome [Congo](https://jpanther.github.io/congo/) theme built for Hug
 
 Just open it and see for yourself?
 
-Uggh don't mind but there was no point of creating this README but then it wouldn't look good when I'd open the repo page :P
+Ugh don't mind but there was no point of creating this README but then it wouldn't look good when I'd open the repo page :P
 
 ## Domain
 
