@@ -96,7 +96,7 @@ I even tried plotting the 3D coordinates after tweaking the paramteres like a ba
 
 ![plot](/plot.png)
 
-This, well this is supposed to be a face of te cube, which should be, idk, slightly squarish I guess? (Even the ground corner coordinates didn't seem to go along the NED direction thing)
+This, well this is supposed to be a face of the cube, which should be, idk, slightly squarish I guess? (Even the ground corner coordinates didn't seem to go along the NED direction thing)
 
 Double checked it with my peers at ARK, asked the seniors about the validity of pose data only to hit a dead end.
 
@@ -114,7 +114,7 @@ ML algorithms in their core are essentially complex approximation methods. Inter
 
 Gradient descent, get a parametric equation for the original complicated equation and bam a very clean solution.
 
-Coming diretly from his repo's README.md
+Coming directly from his repo's README.md
 
 > The final approach was to create a parametric model for a cube in 3D space lying on a horizontal surface. Such a cube is sufficiently described by 5 parameters - the x, y, z coordinates of its centroid, the angle of rotation about the vertical (z-axis), and the side length. The parameterization used has s as the semi side length for a cleaner formula representation. The corners of this cube can be found in terms of these parameters and keys/color descriptors can be assigned in cyclic order. These keys were manually assigned, although it is possible to automatically assign them using the detected color data. With this description, the distance of each corner can be found to all the corresponding projection lines and the sum of the squares of these distances is taken as a loss function. Tensorflow is then used to automatically differentiate and optimize the values of these parameters using the Adam optimizer.
 

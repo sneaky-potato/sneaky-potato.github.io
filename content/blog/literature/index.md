@@ -13,7 +13,7 @@ I always wanted to try out writing. Classic English writing, that is, other than
 
 ## Blog
 
->Lol, talking about my blog in another one of my blogs, recursive literature or wot. Never mind
+>Lol, talking about my blog in another one of my blogs, recursive literature or wot (Related note- [How Blogs Broke The Web](https://stackingthebricks.com/how-blogs-broke-the-web/)).
 
 I started this blog with nothing particular in my mind. Main objective was to setup the website and maybe show people about what I like / do behind the screen.
 
@@ -25,7 +25,7 @@ I kind of started with `Animal Farm`, read `1984` next. Read `The Alchemist`, fo
 
 ## Poetry
 
-The major poems that I've read would be from my school, didn't really make an effort to explore that much. However, I did try writing a poem or two in my first year. (Peak cringe though (╯°□°）╯, but I'll just leave them here )
+The major poems that I've read would be from my school, didn't really make an effort to explore that much. However, I did try writing a poem or two in my first year. (Peak cringe though (╯°□°)╯, but I'll just leave them here )
 
 ---
 

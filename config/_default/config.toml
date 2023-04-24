@@ -6,7 +6,7 @@
 defaultContentLanguage = "en"
 
 baseURL = "https://sneaky-potato.github.io/"
-languageCode = "en"
+# languageCode = "en"
 
 enableRobotsTXT = true
 paginate = 10

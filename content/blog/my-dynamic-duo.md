@@ -21,7 +21,7 @@ for research purposes (no seriously, for some task in computer vision (man, I’
 ## November 2020
 
 So I got a new beast girl (yup all desktops are bois and all laptops are gorls, no further discussion).
-Has been a year and thing’s are going awesome. So she’s from Dell and her name is `Electric-Monolith` (yeah dass the best I could come up with plis no attaccs) or `Elmon` (kinda cute :3). So now I do have a decent GPU and do play sometimes (~~~ignoring the fact that most of my time gets eaten up by algo lab :"~~~). Windows 10 with WSL2 configured and that’s all I could for, ask as far as my development environment is concerned. Maybe I’d add some pictures in here if get time. Until then I guess this’ll end here :-)
+Has been a year and thing’s are going awesome. So she’s from Dell and her name is `Electric-Monolith` (yeah dass the best I could come up with plis no attaccs) or `Elmon` (kinda cute :3). So now I do have a decent GPU and do play sometimes (~~~ignoring the fact that most of my time gets eaten up by algo lab :"~~~). Windows 10 with WSL2 configured and that’s all I could for, ask as far as my development environment is concerned. Maybe I’d add some pictures in here if I get time. Until then I guess this’ll end here :-)
 
 >Here’s a random thing you can try doing: make a directory / file and name it `con` in windows :D  
 
