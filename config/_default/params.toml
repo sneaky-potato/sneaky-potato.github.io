@@ -9,7 +9,7 @@ colorScheme = "congo" # valid options: congo, avocado, fire, ocean, slate
 defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = false
 
-enableSearch = false
+enableSearch = true
 enableCodeCopy = true
 
 # mainSections = ["section1", "section2"]
@@ -22,7 +22,7 @@ enableCodeCopy = true
 
 [homepage]
   layout = "profile" # valid options: page, profile, custom
-  showRecent = true
+  showRecent = false
 
 [article]
   showDate = true

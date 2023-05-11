@@ -4,7 +4,7 @@ description: "Root for TILs"
 
 cascade:
   showEdit: false
-  showSummary: true
+  showSummary: false
 ---
 
 {{< lead >}}
