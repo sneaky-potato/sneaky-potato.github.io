@@ -30,5 +30,7 @@ I came to campus in my 4th semester. I don't think I can ever claim that I know 
 - Get over fear of heights
 - Travel around the world
 - Try out cuisine of all major countries
+- Become a music connoisseur
+- Become a tea and coffee connoisseur as well
 
 ---
