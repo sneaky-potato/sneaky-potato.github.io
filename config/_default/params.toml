@@ -17,12 +17,11 @@ enableImageLazyLoading = true
 # robots = ""
 
 [header]
-showCopyright = true
-showThemeAttribution = true
-showAppearanceSwitcher = false
-showScrollToTop = true
+layout = "basic"
 
 [footer]
+showCopyright = true
+showThemeAttribution = true
 showAppearanceSwitcher = true
 showScrollToTop = true
 

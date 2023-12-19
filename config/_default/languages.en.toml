@@ -4,10 +4,15 @@ languageDirection = "ltr"
 weight = 1
 
 title = "sneaky-potato"
-# description = "My corner of the internet"
+
 copyright = "Copy, _right?_ (▀̿Ĺ̯▀̿ ̿)"
 
 [params]
+dateFormat = "2 January 2006"
+description = "My corner of the internet"
+
+
+[author]
 name = "Ashwani Kumar Kamal"
 image = "img/author.jpg"
 headline = "Busy procrastinating"
