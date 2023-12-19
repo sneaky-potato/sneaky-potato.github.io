@@ -1,26 +1,19 @@
 languageCode = "en"
 languageName = "English"
-displayName = "EN"
-isoCode = "en"
+languageDirection = "ltr"
 weight = 1
-rtl = false
 
 title = "sneaky-potato"
-description = "My corner of the internet"
+# description = "My corner of the internet"
 copyright = "Copy, _right?_ (▀̿Ĺ̯▀̿ ̿)"
 
-dateFormat = "2 January 2006"
-
-[header]
-  logo = "img/logo.jpg"
-
-[author]
-  name = "Ashwani Kumar Kamal"
-  image = "img/author.jpg"
-  headline = "Busy procrastinating"
-  bio = "busy eatin' my soup with my favourite fork"
-  links = [
-    { email = "mailto:sneakypotato.hello@gmail.com" },
+[params]
+name = "Ashwani Kumar Kamal"
+image = "img/author.jpg"
+headline = "Busy procrastinating"
+bio = "busy eatin' my soup with my favourite fork"
+links = [
+  { email = "mailto:sneakypotato.hello@gmail.com" },
   #   { link = "https://link-to-some-website.com/" },
   #   { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
   #   { apple = "https://www.apple.com" },
@@ -29,18 +22,18 @@ dateFormat = "2 January 2006"
   #   { dev = "https://dev.to/username" },
   #   { discord = "https://discord.gg/invitecode" },
   #   { dribbble = "https://dribbble.com/username" },
-    { facebook = "https://www.facebook.com/ashwani.k.kamal/" },
+  { facebook = "https://www.facebook.com/ashwani.k.kamal/" },
   #   { flickr = "https://www.flickr.com/photos/username/" },
   #   { foursquare = "https://foursquare.com/username" },
   #   { gitlab = "https://gitlab.com/username" },
   #   { google = "https://www.google.com/" },
   #   { hashnode = "https://username.hashnode.dev" },
-    { instagram = "https://www.instagram.com/sneaky_potato/" },
+  { instagram = "https://www.instagram.com/sneaky_potato/" },
   #   { keybase = "https://keybase.io/username" },
-    { github = "https://github.com/sneaky-potato" },
+  { github = "https://github.com/sneaky-potato" },
   #   { kickstarter = "https://www.kickstarter.com/profile/username" },
   #   { lastfm = "https://lastfm.com/user/username" },
-    { linkedin = "https://www.linkedin.com/in/ashwani-k-kamal/" },
+  { linkedin = "https://www.linkedin.com/in/ashwani-k-kamal/" },
   #   { mastodon = "https://mastodon.instance/@username" },
   #   { medium = "https://medium.com/username" },
   #   { microsoft = "https://www.microsoft.com/" },
@@ -50,9 +43,9 @@ dateFormat = "2 January 2006"
   #   { reddit = "https://reddit.com/user/username" },
   #   { researchgate = "https://www.researchgate.net/profile/username" },
   #   { slack = "https://workspace.url/team/userid" },
-    { snapchat = "https://snapchat.com/add/sneaky-potatoo" },
+  { snapchat = "https://snapchat.com/add/sneaky-potatoo" },
   #   { soundcloud = "https://soundcloud.com/username" },
-    { stack-overflow = "https://stackoverflow.com/users/19008681/ashwani-kumar-kamal" },
+  { stack-overflow = "https://stackoverflow.com/users/19008681/ashwani-kumar-kamal" },
   #   { steam = "https://steamcommunity.com/profiles/userid" },
   #   { telegram = "https://t.me/username" },
   #   { tiktok = "https://tiktok.com/@username" },
@@ -61,4 +54,4 @@ dateFormat = "2 January 2006"
   #   { twitter = "https://twitter.com/username" },
   #   { whatsapp = "https://wa.me/917906421152" },
   #   { youtube = "https://youtube.com/username" },
-  ]
+]
