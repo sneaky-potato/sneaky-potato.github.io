@@ -31,7 +31,7 @@ I like to think of my background bit like a pizza. The base is Mathematics, the 
 
 I've worked in both frontend and  backend development. I've done courses on Image processing and Deep Learning. Also, recently I've started reading about software design patterns and have developed interest in systems.
 
-My current OS is **Manjaro Linux**
+My current OS is **Arch Linux**
 
 My GitHub [profile](https://github.com/sneaky-potato/) would be a more accurate representation of this section I guess.
 
