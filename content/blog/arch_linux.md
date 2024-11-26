@@ -9,9 +9,11 @@ tags: ["tech", "linux", "os"]
 Assembling real linux OS experience
 {{< /lead >}}
 
+You cannot call yourself an absolute madlad if you've not taken this step in your sorry peaceful life.
+
 ## One way trip
 
-I had manjaro installed in my main SSD and for the most part is was awesome, until it *wasn't*. I backed up every important config folder and my work directories in my hard drive.
+I had manjaro installed in my main SSD and for the most part is was awesome, until it (*drumrolls*) ***wasn't***. I backed up every important config folder and my work directories in my hard drive.
 
 Next thing, I installed Arch Linux in my hard drive (I was sceptical and hesitant) and setup `bspwm` `polybar` `sxhkd` and `rofi` to test things out. There was nothing, no frontend, it felt like a server without pages, can't control brightness, had to setup audio, everything felt like a punch in the face, a blissful punch.
 

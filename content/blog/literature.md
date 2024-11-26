@@ -21,7 +21,7 @@ I started this blog with nothing particular in my mind. Main objective was to se
 
 I got this thing from my former English teacher to be honest. Wouldn't have started if she wasn't my teacher I guess. Still an occassional reader, though.
 
-I kind of started with `Animal Farm`, read `1984` next. Read `The Alchemist`, followed by `The Courage To Be Disliked` (man, Adlerian psychology deserves a blog on itself, ngl). Currently reading `Kafka On The Shore`, have `Fahrenheit 451`, `Catch 22` and `Metamorphosis` next on reading list.
+I kind of started with `Animal Farm`, read `1984` next. Read `The Alchemist`, followed by `The Courage To Be Disliked` (man, Adlerian psychology deserves a blog on itself, ngl). I recently completed `Kafka On The Shore`. I am currently reading `Crime and Punishment`, have `Fahrenheit 451`, `Catch 22` and `Metamorphosis` next on reading list.
 
 ## Poetry
 
