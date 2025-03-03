@@ -1,0 +1,15 @@
+# -- Site Configuration --
+
+baseURL = "https://sneaky-potato.github.io/"
+languageCode = "en"
+
+enableRobotsTXT = true
+summaryLength = 0
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+googleAnalytics = "G-0ZYWDC6JL7"
