@@ -46,7 +46,7 @@ function insertEnd(dynarray a, element e)
 
 ## Growth Factor
 Now to answer, what should be optimal growth factor for this operation? We first need to define the cost of the operation for this question to make sense.
-To understand this, let's take a look at what factor existing systems use-
+To understand this, let's take a look at what factor existing systems use[^1]
 
 | Implementation          | Growth Factor |
 | ---                     | ---           |
@@ -56,7 +56,7 @@ To understand this, let's take a look at what factor existing systems use-
 | Facebook folly/FBVector | 1.5 | 
 | Go slices               | between 1.25 and 2 |
 
-The [folly/FBVector](https://github.com/facebook/folly/blob/main/folly/docs/FBVector.md) describes why growth factor of 2 is not good:
+The folly/FBVector[^5] describes why growth factor of 2 is not good:
 
 Say the size of array is \\(S\\), capacity \\(C\\) and growth factor \\(f\\)
 - first reallocation, a new array of capacity \\(f\*C\\) is created while the old memory of size \\(C\\) is marked obsolete
@@ -91,7 +91,7 @@ This can also be demonstrated by taking some real values, say growth factor is 1
 
 ## Optimal Growth Factor
 For optimality, we need to use up the space free-ed up, as soon as possible.
-This will happen after the second reallocation if and only if obsolete memory size is big enough to contian new memory
+This will happen after the second reallocation[^2] if and only if obsolete memory size is big enough to contian new memory
 $$
 C + f\*C >= f\*f\*C
 $$
@@ -106,10 +106,14 @@ $$
 f <= \varphi = \frac{1 + \sqrt{5}} {2}
 $$
 
-https://github.com/facebook/folly/blob/main/folly/docs/FBVector.md
-https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/
-https://en.wikipedia.org/wiki/Dynamic_array
-https://www.reddit.com/r/math/comments/23omv2/why_is_phi_called_as_the_most_irrational_number/
-https://math.stackexchange.com/questions/395938/why-is-varphi-called-the-most-irrational-number
+And yes the golden ratio just made its way in this problem as well. This reminds of a very beautiful visual[^4] shown in Numberphile regarding using golden ratio.
 
----
+I wrote this whole page because [this](https://www.youtube.com/watch?v=GZPqDvG615k) video popped up in my youtube feed. Very interesting insights which I have not mentioned in this post.
+
+
+[^1]: [Dynamic Array - Wikipedia](https://en.wikipedia.org/wiki/Dynamic_array)
+[^2]: [cpp-internals-stl-vector](https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/)
+[^3]: [Why Phi is most irrational - Math Stackexhange](https://math.stackexchange.com/questions/395938/why-is-varphi-called-the-most-irrational-number)
+[^4]: [The Golden Ratio (why it is so irrational) - Numberphile](https://www.youtube.com/watch?v=sj8Sg8qnjOg)
+[^5]: [Facebook folly/FBVector](https://github.com/facebook/folly/blob/main/folly/docs/FBVector.md)
+
