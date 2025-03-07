@@ -13,22 +13,22 @@ Memory and this beauty: \\(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…\\)
 
 ## Changing sizes
 If you do programming you would be familiar with the likes of `std::vector` or `ArrayList<>` or `slices`. These are examples of dynamic array.
-These are arrays which can change their size during runtime. On the contrary we have static arrays which have their size defined which cannot be changed or resized.
+These are arrays which can change their size during runtime. On the contrary we have static arrays which have their size defined and cannot be changed dynamically.
 A natural question is how do these structures grow in size when elements are appended to them?
 
 Consider the following terms:
 - size: logical length of the array
 - capacity: the maximum logical length of the array
 ```c
-int arr[256]; // an static array of capacity 256 is defined
+int arr[256]; // a static array of capacity 256 is defined
 arr[0] = 1;   // size of the array is 2 
 arr[1] = 2;   // as only 2 meaningful elements are inserted
 ```
 
-The approach used goes like this
+The approach used for appending elements goes like this in case of dynamic arrays-
 - use a static array
 - *grow* the array in size when inserting a new element makes size >= capacity
-- this is is done by creating a new array of larger capacity and copying the older array in this new memory location
+- this is done by creating a new array of larger capacity and copying the older array in this new memory location
 - the older array is then deleted and this new larer array can be used for further appends
 - but the question is, how large this new array should be?
 
@@ -45,8 +45,9 @@ function insertEnd(dynarray a, element e)
 ```
 
 ## Growth Factor
+Notice in the above code snippet, array capacity gets **doubled** each time we need more size, this is called the **growth factor**.
 Now to answer, what should be optimal growth factor for this operation? We first need to define the cost of the operation for this question to make sense.
-To understand this, let's take a look at what factor existing systems use[^1]
+To understand this, let's take a look at what values existing systems use (thanks wikipedia[^1])
 
 | Implementation          | Growth Factor |
 | ---                     | ---           |
@@ -90,25 +91,56 @@ This can also be demonstrated by taking some real values, say growth factor is 1
 - This will not be possible with a growth factor of 2, your array will be forced to crawl forward in memory and will not be able to use free-ed up memory.
 
 ## Optimal Growth Factor
-For optimality, we need to use up the space free-ed up, as soon as possible.
+For optimality, we need to use the free-ed space efficiently, or as soon as possible.
 This will happen after the second reallocation[^2] if and only if obsolete memory size is big enough to contian new memory
 $$
 C + f\*C >= f\*f\*C
 $$
-The \\(C\\) factor can be cancelled out here
+The \\(C\\) factor can be cancelled out here and we are presented with a familiar quadratic inequality
 $$
-1 + f <= f^2
+1 + f >= f^2
 $$
 $$
-f^2 - f - 1 >= 0
+f^2 - f - 1 <= 0
 $$
 $$
 f <= \varphi = \frac{1 + \sqrt{5}} {2}
 $$
 
-And yes the golden ratio just made its way in this problem as well. This reminds of a very beautiful visual[^4] shown in Numberphile regarding using golden ratio.
+And yes the golden ratio just made its way in this problem as well. This reminds of a very beautiful visual shown in Numberphile[^4] using golden ratio.
 
-I wrote this whole page because [this](https://www.youtube.com/watch?v=GZPqDvG615k) video popped up in my youtube feed. Very interesting insights which I have not mentioned in this post.
+Since golden ratio is defined as \\(\lim_{n\to\infty}\frac{T_{n}}{T_{n-1}}\\) where \\(T_n\\) is the nth fibonacci number, 
+so this means to grow the array as fibonacci numbers grow.
+
+## Real life solution
+In reality after the nth allocation we would have the following memory chunks-
+
+$$
+ C, fC, f^2C, f^3C, ..., f^{n-1}C, f^{n}C
+$$
+
+The current array occupies the space \\(f^{n-1}C\\), new space is \\(f^{n}C\\) and we have \\(C+fC+f^2C+f^3C+...+f^{n-2}C\\) free space.
+We want to fit the new array in older free memory, this means solving-
+$$
+C+fC+f^2C+f^3C+...+f^{n-2}C >= f^nC
+$$
+
+$$
+\frac{f^{n-1}-1}{f-1} >= f^n
+$$
+
+$$
+f^{n-1}-1 >= f^{n+1} - f^n
+$$
+
+For very large n \\(f^{n-1}\\) dominates 1 so this can be written as the above quadratic giving golden ratio as the ideal factor. However for small n, a value slightly less than \\(\varphi\\) works, which is often taken as 1.5
+
+I wrote this whole page because [this](https://www.youtube.com/watch?v=GZPqDvG615k) video popped in my youtube feed. 
+
+{{< youtube GZPqDvG615k >}}
+
+
+Very interesting insights which I have not mentioned in this post.
 
 
 [^1]: [Dynamic Array - Wikipedia](https://en.wikipedia.org/wiki/Dynamic_array)
