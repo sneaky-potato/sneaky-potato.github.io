@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sneaky Potato Game</title>
+  <script src="/wasm/wasm_exec.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    canvas {
+      width: 100%;
+      height: auto;
+      max-width: 800px;
+      border: 1px solid #444;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <script>
+    const go = new Go();
+    WebAssembly.instantiateStreaming(fetch("/wasm/main.wasm"), go.importObject)
+      .then(result => go.run(result.instance))
+      .catch(err => console.error("WASM load error:", err));
+  </script>
+</body>
+</html>
