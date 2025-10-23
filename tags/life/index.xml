@@ -1,1 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Life on sneaky-potato</title><link>https://sneaky-potato.github.io/tags/life/</link><description>Recent content in Life on sneaky-potato</description><generator>Hugo</generator><language>en</language><copyright>Copy, _right?_ (▀̿Ĺ̯▀̿ ̿)</copyright><lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/life/index.xml" rel="self" type="application/rss+xml"/><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/blog/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/trivy-analyzers/</guid><description/></item><item><title>Game</title><link>https://sneaky-potato.github.io/blog/game/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/game/</guid><description/></item><item><title>Dynamics of a dynamic array</title><link>https://sneaky-potato.github.io/blog/dynamic-array/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/dynamic-array/</guid><description/></item><item><title>Bucket List</title><link>https://sneaky-potato.github.io/blog/bucket-list/</link><pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/bucket-list/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Life on Potato</title><link>https://example.org/tags/life/</link><description>Recent content in Life on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.org/tags/life/index.xml" rel="self" type="application/rss+xml"/><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://example.org/blog/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+How Trivy Dynamically Discovers New File Format Analyzers in Go
+&lt;/div&gt;
+&lt;h2 id="what"&gt;What?&lt;/h2&gt;
+&lt;p&gt;I want to discuss a particular design pattern in go through a &lt;a href="https://github.com/aquasecurity/trivy/pull/8897"&gt;PR&lt;/a&gt; which I raised in the open source project &lt;a href="https://github.com/aquasecurity/trivy"&gt;trivy&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="what-is-trivy"&gt;What is trivy?&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://trivy.dev"&gt;Trivy&lt;/a&gt; is an open source vulnerability scanner. You could use Trivy to find vulnerabilities (CVE) &amp;amp; misconfigurations (IaC) across code repositories, binary artifacts, container images, Kubernetes clusters, and more.&lt;/p&gt;
+&lt;p&gt;Since it is open source it used in extensively in build and deploy pipelines across projects. I used trivy in my build pipelines to scan images, configuration, licenses and most importantly - &lt;strong&gt;vulnerabilities&lt;/strong&gt; in the source code.&lt;/p&gt;</description></item><item><title>Game</title><link>https://example.org/blog/game/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/game/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Game development in golang
+&lt;/div&gt;
+&lt;h2 id="the-game"&gt;The game&lt;/h2&gt;
+&lt;p&gt;WORK IN PROGRESS
+&lt;div class="iframe-wrapper"&gt;
+&lt;iframe src="https://example.org/game/index.html" title="Sneaky Potato Game" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.iframe-wrapper {
+position: relative;
+width: 100%;
+padding-top: 56.25%;
+margin: 2rem 0;
+}
+.iframe-wrapper iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: 1px solid var(--color-border);
+background: #000;
+}
+&lt;/style&gt;
+&lt;/p&gt;</description></item><item><title>Dynamics of a dynamic array</title><link>https://example.org/blog/dynamic-array/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/dynamic-array/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Memory and this beauty: $(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$)
+&lt;/div&gt;
+&lt;h2 id="changing-sizes"&gt;Changing sizes&lt;/h2&gt;
+&lt;p&gt;If you do programming you would be familiar with the likes of &lt;code&gt;std::vector&amp;lt;&amp;gt;&lt;/code&gt; or &lt;code&gt;ArrayList&amp;lt;&amp;gt;&lt;/code&gt; or &lt;code&gt;slices&lt;/code&gt;. These are examples of dynamic array.
+These are arrays which can change their size during runtime. On the contrary we have static arrays which have their size defined and cannot be changed dynamically.
+A natural question is how do these structures grow in size when elements are appended to them?&lt;/p&gt;</description></item><item><title>Bucket List</title><link>https://example.org/blog/bucket-list/</link><pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate><guid>https://example.org/blog/bucket-list/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Ayy, how much for that large bucket over there, sir?
+&lt;/div&gt;
+&lt;p&gt;Classic cringe-full bucket list, will keep updating this.&lt;/p&gt;
+&lt;h2 id="to-do-before-graduation"&gt;To-do-before-graduation&lt;/h2&gt;
+&lt;p&gt;I came to campus in my 4th semester. I don&amp;rsquo;t think I can ever claim that I know my campus in and out (even on my last day here as a student). There&amp;rsquo;s just too many corners and nooks here. The following list doesn&amp;rsquo;t make much sense, but hey, atleast I&amp;rsquo;ll have something to look forward to till then.&lt;/p&gt;</description></item></channel></rss>

@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://sneaky-potato.github.io/sitemap.xml

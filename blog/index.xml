@@ -1,1 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on sneaky-potato</title><link>https://sneaky-potato.github.io/blog/</link><description>Recent content in Blog on sneaky-potato</description><generator>Hugo</generator><language>en</language><copyright>Copy, _right?_ (▀̿Ĺ̯▀̿ ̿)</copyright><lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/blog/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/trivy-analyzers/</guid><description/></item><item><title>Staring inside programs: ELF</title><link>https://sneaky-potato.github.io/blog/elf/</link><pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/elf/</guid><description/></item><item><title>Game</title><link>https://sneaky-potato.github.io/blog/game/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/game/</guid><description/></item><item><title>Dynamics of a dynamic array</title><link>https://sneaky-potato.github.io/blog/dynamic-array/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/dynamic-array/</guid><description/></item><item><title>Down the linux rabbit hole</title><link>https://sneaky-potato.github.io/blog/arch_linux/</link><pubDate>Thu, 16 May 2024 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/arch_linux/</guid><description/></item><item><title>Bucket List</title><link>https://sneaky-potato.github.io/blog/bucket-list/</link><pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/bucket-list/</guid><description/></item><item><title>Glitch 101 Guide</title><link>https://sneaky-potato.github.io/blog/on/</link><pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/on/</guid><description/></item><item><title>Writing</title><link>https://sneaky-potato.github.io/blog/literature/</link><pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/literature/</guid><description/></item><item><title>A Computer Vision Problem</title><link>https://sneaky-potato.github.io/blog/cv/</link><pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/cv/</guid><description/></item><item><title>My Dynamic Duo</title><link>https://sneaky-potato.github.io/blog/my-dynamic-duo/</link><pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/my-dynamic-duo/</guid><description/></item><item><title>take-off.yml</title><link>https://sneaky-potato.github.io/blog/take-off/</link><pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/take-off/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Potato</title><link>https://example.org/blog/</link><description>Recent content in Blog on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 07 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.org/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://example.org/blog/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+How Trivy Dynamically Discovers New File Format Analyzers in Go
+&lt;/div&gt;
+&lt;h2 id="what"&gt;What?&lt;/h2&gt;
+&lt;p&gt;I want to discuss a particular design pattern in go through a &lt;a href="https://github.com/aquasecurity/trivy/pull/8897"&gt;PR&lt;/a&gt; which I raised in the open source project &lt;a href="https://github.com/aquasecurity/trivy"&gt;trivy&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="what-is-trivy"&gt;What is trivy?&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://trivy.dev"&gt;Trivy&lt;/a&gt; is an open source vulnerability scanner. You could use Trivy to find vulnerabilities (CVE) &amp;amp; misconfigurations (IaC) across code repositories, binary artifacts, container images, Kubernetes clusters, and more.&lt;/p&gt;
+&lt;p&gt;Since it is open source it used in extensively in build and deploy pipelines across projects. I used trivy in my build pipelines to scan images, configuration, licenses and most importantly - &lt;strong&gt;vulnerabilities&lt;/strong&gt; in the source code.&lt;/p&gt;</description></item><item><title>Staring inside programs: ELF</title><link>https://example.org/blog/elf/</link><pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/elf/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+To the level where hexadecimals appear
+&lt;/div&gt;
+&lt;h2 id="elf"&gt;ELF&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;E&lt;/strong&gt;xtensible and &lt;strong&gt;L&lt;/strong&gt;inkable &lt;strong&gt;F&lt;/strong&gt;ormat is a file format used for executable binaries in the linux operating system.&lt;/p&gt;
+&lt;p&gt;However ELFs are used for more than just executables, they are used for storing object files as well as shared libraries.
+You can look at a files raw hexadecimal bytes using &lt;code&gt;xxd&lt;/code&gt; and we will use it on ELFs, let us have a look at the first line inside the raw bytes of &lt;code&gt;ls&lt;/code&gt; executable.&lt;/p&gt;</description></item><item><title>Game</title><link>https://example.org/blog/game/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/game/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Game development in golang
+&lt;/div&gt;
+&lt;h2 id="the-game"&gt;The game&lt;/h2&gt;
+&lt;p&gt;WORK IN PROGRESS
+&lt;div class="iframe-wrapper"&gt;
+&lt;iframe src="https://example.org/game/index.html" title="Sneaky Potato Game" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.iframe-wrapper {
+position: relative;
+width: 100%;
+padding-top: 56.25%;
+margin: 2rem 0;
+}
+.iframe-wrapper iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: 1px solid var(--color-border);
+background: #000;
+}
+&lt;/style&gt;
+&lt;/p&gt;</description></item><item><title>Dynamics of a dynamic array</title><link>https://example.org/blog/dynamic-array/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><guid>https://example.org/blog/dynamic-array/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Memory and this beauty: $(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$)
+&lt;/div&gt;
+&lt;h2 id="changing-sizes"&gt;Changing sizes&lt;/h2&gt;
+&lt;p&gt;If you do programming you would be familiar with the likes of &lt;code&gt;std::vector&amp;lt;&amp;gt;&lt;/code&gt; or &lt;code&gt;ArrayList&amp;lt;&amp;gt;&lt;/code&gt; or &lt;code&gt;slices&lt;/code&gt;. These are examples of dynamic array.
+These are arrays which can change their size during runtime. On the contrary we have static arrays which have their size defined and cannot be changed dynamically.
+A natural question is how do these structures grow in size when elements are appended to them?&lt;/p&gt;</description></item><item><title>Down the linux rabbit hole</title><link>https://example.org/blog/arch_linux/</link><pubDate>Thu, 16 May 2024 00:00:00 +0000</pubDate><guid>https://example.org/blog/arch_linux/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Assembling real linux OS experience
+&lt;/div&gt;
+&lt;p&gt;You cannot call yourself an absolute madlad if you&amp;rsquo;ve not taken this step in your sorry peaceful life.&lt;/p&gt;
+&lt;h2 id="one-way-trip"&gt;One way trip&lt;/h2&gt;
+&lt;p&gt;I had manjaro installed in my main SSD and for the most part is was awesome, until it (&lt;em&gt;drumrolls&lt;/em&gt;) &lt;em&gt;&lt;strong&gt;wasn&amp;rsquo;t&lt;/strong&gt;&lt;/em&gt;. I backed up every important config folder and my work directories in my hard drive.&lt;/p&gt;
+&lt;p&gt;Next thing, I installed Arch Linux in my hard drive (I was sceptical and hesitant) and setup &lt;code&gt;bspwm&lt;/code&gt; &lt;code&gt;polybar&lt;/code&gt; &lt;code&gt;sxhkd&lt;/code&gt; and &lt;code&gt;rofi&lt;/code&gt; to test things out. There was nothing, no frontend, it felt like a server without pages, can&amp;rsquo;t control brightness, had to setup audio, everything felt like a punch in the face, a blissful punch.&lt;/p&gt;</description></item><item><title>Bucket List</title><link>https://example.org/blog/bucket-list/</link><pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate><guid>https://example.org/blog/bucket-list/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Ayy, how much for that large bucket over there, sir?
+&lt;/div&gt;
+&lt;p&gt;Classic cringe-full bucket list, will keep updating this.&lt;/p&gt;
+&lt;h2 id="to-do-before-graduation"&gt;To-do-before-graduation&lt;/h2&gt;
+&lt;p&gt;I came to campus in my 4th semester. I don&amp;rsquo;t think I can ever claim that I know my campus in and out (even on my last day here as a student). There&amp;rsquo;s just too many corners and nooks here. The following list doesn&amp;rsquo;t make much sense, but hey, atleast I&amp;rsquo;ll have something to look forward to till then.&lt;/p&gt;</description></item><item><title>Glitch 101 Guide</title><link>https://example.org/blog/on/</link><pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate><guid>https://example.org/blog/on/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+~(~1).
+&lt;/div&gt;
+&lt;p&gt;I act like normal people, almost everyday but then I relax a bit and do weird stuff. Idk, it feels like I&amp;rsquo;m the &amp;ldquo;normal&amp;rdquo; guy at that time.&lt;/p&gt;
+&lt;h2 id="why-are-you-writing-right-now"&gt;Why are you writing right now?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Must leave this information, else they won&amp;rsquo;t be able to know. This is our only form of communication. The last hope.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Even I wouldn&amp;rsquo;t expect myself to be this so descriptive lol. That&amp;rsquo;s like too much verbose.&lt;/p&gt;</description></item><item><title>Writing</title><link>https://example.org/blog/literature/</link><pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate><guid>https://example.org/blog/literature/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+You got me with &amp;rsquo;em thicc words (◡‿◡*).
+&lt;/div&gt;
+&lt;p&gt;I always wanted to try out writing. Classic English writing, that is, other than the assembly-directive-shenanigans that I&amp;rsquo;m writing nowadays for my assignments (T_T).&lt;/p&gt;
+&lt;h2 id="blog"&gt;Blog&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lol, talking about my blog in another one of my blogs, recursive literature or wot (Related note- &lt;a href="https://stackingthebricks.com/how-blogs-broke-the-web/"&gt;How Blogs Broke The Web&lt;/a&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I started this blog with nothing particular in my mind. Main objective was to setup the website and maybe show people about what I like / do behind the screen.&lt;/p&gt;</description></item><item><title>A Computer Vision Problem</title><link>https://example.org/blog/cv/</link><pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate><guid>https://example.org/blog/cv/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+An interesting Computer Vision problem with all my approaches and an elegant solution.
+&lt;/div&gt;
+&lt;p&gt;Original problem statement file and required files &lt;a href="https://drive.google.com/drive/folders/1BDYyxglyihcEPfUyxoK2Iq1567Ymt3PN?usp=sharing"&gt;here&lt;/a&gt;. This problem was given to me in my sophomore year as a task under my tenure in the ARK perception team.&lt;/p&gt;
+&lt;p&gt;I haven&amp;rsquo;t done robotics in a long while (am writing this thing after leaving all that stuff behind), this being the only testimony of me having done those courses on image processing lol.&lt;/p&gt;</description></item><item><title>My Dynamic Duo</title><link>https://example.org/blog/my-dynamic-duo/</link><pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate><guid>https://example.org/blog/my-dynamic-duo/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Disclaimer: This post is absolutely not about my butt curves. Now let’s start this thing off with a boring-made-up quote&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When it comes to building / learning stuff one can never and should never forget the tools which led them to tangible feat. Things get real serious when those tools happen to be the very same dark-shiny-squarish boxes which filled your eyes with a childish glossom (maybe?) when they arrived. (I mean, I have my algorithms lab tomorrow and I’m still writing this blog, c’mon man it’s dead serious)&lt;/p&gt;</description></item><item><title>take-off.yml</title><link>https://example.org/blog/take-off/</link><pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate><guid>https://example.org/blog/take-off/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Cuz why not?
+&lt;/div&gt;
+&lt;p&gt;How to cliché recipe 101&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;make a website using some &lt;a href="https://www.cloudflare.com/en-in/learning/performance/static-site-generator/"&gt;SSG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;start adding blog posts on it&lt;/li&gt;
+&lt;li&gt;talk about pHiLoSoPhY, lIfEsTyLe, lItErAtUrE and mostly non-tech (disguised attempt to gain social points :clown:)&lt;/li&gt;
+&lt;li&gt;&lt;img src="https://example.org/stonks_doge.jpg" alt="stonk_doge"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Yup, acting like that cool doge is the final step in the recipe)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sighs&lt;/em&gt;, I’ll try my best to make the content a little interesting atleast so please bear with my nagging :x&lt;/p&gt;</description></item></channel></rss>
