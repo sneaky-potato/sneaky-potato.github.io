@@ -9,8 +9,6 @@ tags: ["tech"]
 When you realize necessity is the mother of invention
 {{< /lead >}}
 
-{{< katex >}}
-
 ## Help with Sxhkd
 
 I kept on forgetting the keybindings of my [bspwm](https://github.com/baskerville/bspwm) + [sxhkd](https://github.com/baskerville/sxhkd) workflow setup, initially. The obvious solution was to setup a help menu which will help me remember the bindings whenever I needed them. That is when I went on a internet voyage to find such a thing.

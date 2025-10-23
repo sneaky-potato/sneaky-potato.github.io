@@ -9,8 +9,6 @@ tags: ["life"]
 Game development in golang
 {{< /lead >}}
 
-{{< katex >}}
-
 ## The game
 WORK IN PROGRESS
 {{< wasm >}}

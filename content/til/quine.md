@@ -9,8 +9,6 @@ tags: ["tech"]
 When programming becomes a piece of art.
 {{< /lead >}}
 
-{{< katex >}}
-
 ## What is it?
 
 A simple quine is its simplicity is a computer program that takes no input and produces a copy of its own source code as its only output. Think of it as a self replicating program. People have been coding quines for a long time now and have even gone ot the extent of creating more creative and smallest quines possible.

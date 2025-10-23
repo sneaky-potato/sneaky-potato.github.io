@@ -3,16 +3,15 @@ title: "Dynamics of a dynamic array"
 date: 2025-03-06
 description: "memory, fibonacci, phi"
 tags: ["life"]
+math: true
 ---
 
 {{< lead >}}
-Memory and this beauty: \\(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…\\)
+Memory and this beauty: $(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$)
 {{< /lead >}}
 
-{{< katex >}}
-
 ## Changing sizes
-If you do programming you would be familiar with the likes of `std::vector` or `ArrayList<>` or `slices`. These are examples of dynamic array.
+If you do programming you would be familiar with the likes of `std::vector<>` or `ArrayList<>` or `slices`. These are examples of dynamic array.
 These are arrays which can change their size during runtime. On the contrary we have static arrays which have their size defined and cannot be changed dynamically.
 A natural question is how do these structures grow in size when elements are appended to them?
 
@@ -59,9 +58,9 @@ To understand this, let's take a look at what values existing systems use (thank
 
 The folly/FBVector[^5] describes why growth factor of 2 is not good:
 
-Say the size of array is \\(S\\), capacity \\(C\\) and growth factor \\(f\\)
-- first reallocation, a new array of capacity \\(f\*C\\) is created while the old memory of size \\(C\\) is marked obsolete
-- second reallocation, a new array of capacity \\(f\*f\*C\\) is created while older memory of size \\(C + f\*C\\) is marked obsolete
+Say the size of array is $(S$), capacity $(C$) and growth factor $(f$)
+- first reallocation, a new array of capacity $(f\*C$) is created while the old memory of size $(C$) is marked obsolete
+- second reallocation, a new array of capacity $(f\*f\*C$) is created while older memory of size $(C + f\*C$) is marked obsolete
 - since arrays are contiguous we are constrained to only take contiguous sections in the memory
 
 This creates the following series of memory-
@@ -69,7 +68,7 @@ $$
  C, C\*f, C\*f^2, C\*f^3, ...
 $$
 
-Say \\(f = 2\\), this presents the following series-
+Say $(f = 2$), this presents the following series-
 $$
  C, 2C, 4C, 8C, ...
 $$
@@ -79,7 +78,7 @@ $$
  C + 2C + 4C + 8C + ... + 2^nC = (2^{n+1} - 1)C < 2^{n+1}C
 $$
 
-So this means new array is of size \\(2^{n+1}C\\) and cannot use the obsolete marked memory because it is of size \\((2^{n+1}-1)C\\), hence a growth factor less than 2 is preferred.
+So this means new array is of size $(2^{n+1}C$) and cannot use the obsolete marked memory because it is of size $((2^{n+1}-1)C$), hence a growth factor less than 2 is preferred.
 
 This can also be demonstrated by taking some real values, say growth factor is 1.5, and we start with 16 byte array allocation
 - Start with 16 bytes
@@ -96,7 +95,7 @@ This will happen after the second reallocation[^2] if and only if obsolete memor
 $$
 C + f\*C >= f\*f\*C
 $$
-The \\(C\\) factor can be cancelled out here and we are presented with a familiar quadratic inequality
+The $(C$) factor can be cancelled out here and we are presented with a familiar quadratic inequality
 $$
 1 + f >= f^2
 $$
@@ -109,7 +108,7 @@ $$
 
 And yes the golden ratio just made its way in this problem as well. This reminds of a very beautiful visual shown in Numberphile[^4] using golden ratio.
 
-Since golden ratio is defined as \\(\lim_{n\to\infty}\frac{T_{n}}{T_{n-1}}\\) where \\(T_n\\) is the nth fibonacci number, 
+Since golden ratio is defined as $(\lim_{n\to\infty}\frac{T_{n}}{T_{n-1}}$) where $(T_n$) is the nth fibonacci number, 
 so this means to grow the array as fibonacci numbers grow.
 
 ## Real life solution
@@ -119,7 +118,7 @@ $$
  C, fC, f^2C, f^3C, ..., f^{n-1}C, f^{n}C
 $$
 
-The current array occupies the space \\(f^{n-1}C\\), new space is \\(f^{n}C\\) and we have \\(C+fC+f^2C+f^3C+...+f^{n-2}C\\) free space.
+The current array occupies the space $(f^{n-1}C$), new space is $(f^{n}C$) and we have $(C+fC+f^2C+f^3C+...+f^{n-2}C$) free space.
 We want to fit the new array in older free memory, this means solving-
 $$
 C+fC+f^2C+f^3C+...+f^{n-2}C >= f^nC
@@ -133,7 +132,7 @@ $$
 f^{n-1}-1 >= f^{n+1} - f^n
 $$
 
-For very large n \\(f^{n-1}\\) dominates 1 so this can be written as the above quadratic giving golden ratio as the ideal factor. However for small n, a value slightly less than \\(\varphi\\) works, which is often taken as 1.5
+For very large n $(f^{n-1}$) dominates 1 so this can be written as the above quadratic giving golden ratio as the ideal factor. However for small n, a value slightly less than $(\varphi$) works, which is often taken as 1.5
 
 I wrote this whole page because [this](https://www.youtube.com/watch?v=GZPqDvG615k) video popped in my youtube feed. 
 
