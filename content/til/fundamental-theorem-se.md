@@ -9,8 +9,6 @@ tags: ["strategy", "tech"]
 Solution to most of the problems when building software systems
 {{< /lead >}}
 
-{{< katex >}}
-
 The [theorem](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) simply states the following
 
 > We can solve any problem by introducing an extra level of indirection

@@ -9,8 +9,6 @@ tags: ["reading"]
 Super fast distributed port scanner
 {{< /lead >}}
 
-{{< katex >}}
-
 Just search up Carna botnet and you'll be presented with a picture of world map. This is supposed to be the scan result of [Carna botnet](https://en.wikipedia.org/wiki/Carna_botnet).
 The idea of this concept was to measure the extent of internet in what the creator called the Internet Census of 2012. The data was collected by infiltrating Internet devices, especially routers, that used a default password or no password at all. It was named after Carna, the Roman goddess for the protection of inner organs and health.
 

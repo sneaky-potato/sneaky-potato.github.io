@@ -10,8 +10,6 @@ draft: true
 Internet's Own Boy
 {{< /lead >}}
 
-{{< katex >}}
-
 There are many problems where computer scientists employ interesting algorithms to solve them. One such problem which is often seen in real life is the problem of [Optimal Stopping](https://en.wikipedia.org/wiki/Optimal_stopping).
 
 Also known as [The Secretary problem](https://en.wikipedia.org/wiki/Secretary_problem) (GFG article on the same- [here](https://www.geeksforgeeks.org/secretary-problem-optimal-stopping-problem/)), say you’re interviewing a group of applicants for a position, how do you maximize the chances of hiring the single best applicant in the pool? (Once a candidate is rejected, they are gone forever and cannot be recalled.)

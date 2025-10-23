@@ -9,8 +9,6 @@ tags: ["reading"]
 More reading material
 {{< /lead >}}
 
-{{< katex >}}
-
 [Paul Graham](https://en.wikipedia.org/wiki/Paul_Graham_(programmer)) best known for his work on Lisp or his former startup Viaweb (later renamed Yahoo! Store)
 But I got to know about this guy from the essays he's written and published on his website
 
