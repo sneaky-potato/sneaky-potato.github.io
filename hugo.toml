@@ -22,6 +22,11 @@ title = 'Potato'
     name = 'About'
     url = '/about/'
     weight = 30
+  [[menu.main]]
+    pageRef="/cv.pdf"
+    name = 'CV'
+    url = '/cv.pdf'
+    weight = 30
 
 [params]
   sitename = "Awesome hugo blog"
@@ -32,6 +37,7 @@ title = 'Potato'
   goToTop = true # set to false to disable 'go to top' button
   dateFormat = "" # date format used to show dates on various pages. If nothing is specified, then "2 Jan 2006" format is used.
   rssFeedDescription = "summary" # available options: 1) summary 2) full
+  math = true
 
 
 [params.author]
@@ -39,3 +45,7 @@ title = 'Potato'
   intro = "Ashwani Kumar Kamal"
   name = "Ashwani Kumar Kamal"
   description = ""
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/sneaky-potato"
