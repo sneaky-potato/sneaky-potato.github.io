@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on Potato</title><link>https://sneaky-potato.github.io/tags/tech/</link><description>Recent content in Tech on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Quines</title><link>https://sneaky-potato.github.io/til/quine/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/til/quine/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on Potato</title><link>https://sneaky-potato.github.io/tags/tech/</link><description>Recent content in Tech on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 25 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Sockets, servers and scalability</title><link>https://sneaky-potato.github.io/blog/servers/</link><pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/servers/</guid><description>&lt;h1 id="scaling-a-server-to-handle-many-requests"&gt;Scaling a server to handle many requests&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Everyone can talk, listening is where the actual difficulty lies.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Caution: If the word &lt;em&gt;&lt;strong&gt;socket&lt;/strong&gt;&lt;/em&gt; does not ring any bells in your mind, this article will be difficult for you to follow.&lt;/p&gt;
+&lt;h2 id="bare-bones-server"&gt;Bare bones server&lt;/h2&gt;
+&lt;p&gt;At the time of writing this article, I am employed as a fullstack software engineer and a lot of my work intersects with writing backend microservices.
+Microservices that scale for traffic. I primarily use &lt;a href="https://go.dev/"&gt;Go&lt;/a&gt; to write these backend APIs.
+Often times, I think about how backend servers are implemented internally and I decided to research a bit on the topic and that is the discussion of this very article.
+So if you are someone who has written any form of backend APIs, web servers or network programming, this article is going to be perfect for you.&lt;/p&gt;</description></item><item><title>Quines</title><link>https://sneaky-potato.github.io/til/quine/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/til/quine/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 When programming becomes a piece of art.
 &lt;/div&gt;
 &lt;h2 id="what-is-it"&gt;What is it?&lt;/h2&gt;
