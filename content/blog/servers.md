@@ -3,7 +3,6 @@ title: "Sockets, servers and scalability"
 date: 2025-10-25
 description: "linux, networks, sockets"
 tags: ["tech"]
-math: true
 ---
 
 # Scaling a server to handle many requests
@@ -12,6 +11,14 @@ math: true
 
 Caution: If the word _**socket**_ does not ring any bells in your mind, this article will be difficult for you to follow.
 
+## Web Servers
+
+If you have ever implemented web servers in [Node.js](https://nodejs.org/en), then I have a spoiler for you: the engine used for the event loop inside Node.js is written in C.
+It is [libuv](https://github.com/libuv/libuv) and it is written in C. 
+
+Node.js has an event loop, which helps the programmer write asynchronous code easily. This event loop is provided by `libuv`.
+But why does Node.js even need an event loop? I will try to answer this very question.
+
 ## Bare bones server
 
 At the time of writing this article, I am employed as a fullstack software engineer and a lot of my work intersects with writing backend microservices.
@@ -19,7 +26,7 @@ Microservices that scale for traffic. I primarily use [Go](https://go.dev/) to w
 Often times, I think about how backend servers are implemented internally and I decided to research a bit on the topic and that is the discussion of this very article.
 So if you are someone who has written any form of backend APIs, web servers or network programming, this article is going to be perfect for you.
 
-Let us start our discussion using first princple thinking, which I like to apply to any new problem which is thrown at me.
+Let us start our discussion using first principle thinking, which I like to apply to any new problem which is thrown at me.
 So, what are web servers actually? Having done my networks course in C, I would have answered this question with one word: ***socket***.
 
 ### Socket
@@ -258,7 +265,7 @@ Then the kernel keeps track of all those sockets for you.
 There are three main system calls:
 | Call              | Purpose                                            | Analogy                                        |
 | ----------------- | -------------------------------------------------- | ---------------------------------------------- |
-| `epoll_create1()` | Create a new epoll instance (kernel event manager) | Create an empty watch list                     |
+| `epoll_create1()` | Create a new epoll instance                        | Create an empty watch list                     |
 | `epoll_ctl()`     | Add / remove / modify which FDs you want to watch  | Add items to your interest list                |
 | `epoll_wait()`    | Block until one or more watched FDs become ready   | Wait for events to appear in the ready queue   |
 
