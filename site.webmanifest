@@ -3,7 +3,7 @@
     "short_name": "Awesome hugo blog",
     "start_url": "https://sneaky-potato.github.io/",
     "theme_color": "#434648",
-    "background_color": "#131418",
+    "background_color": "#ffffff",
     "display": "standalone",
     "icons": [
         {
