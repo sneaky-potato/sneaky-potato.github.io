@@ -30,7 +30,7 @@ title = 'Potato'
 
 [params]
   sitename = "Awesome hugo blog"
-  defaultColor = "dark" # set color mode: dark, light, auto
+  defaultColor = "light" # set color mode: dark, light, auto
   description = "Thème minimal pour blog Hugo avec prise en charge des modes clair et sombre"
   mainSections = ['blog']
   tocOpen = false # set to true to open table of contents by default
