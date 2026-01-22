@@ -7,14 +7,7 @@
 &lt;p&gt;At the time of writing this article, I am employed as a fullstack software engineer and a lot of my work intersects with writing backend microservices.
 Microservices that scale for traffic. I primarily use &lt;a href="https://go.dev/"&gt;Go&lt;/a&gt; to write these backend APIs.
 Often times, I think about how backend servers are implemented internally and I decided to research a bit on the topic and that is the discussion of this very article.
-So if you are someone who has written any form of backend APIs, web servers or network programming, this article is going to be perfect for you.&lt;/p&gt;</description></item><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/blog/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
-How Trivy Dynamically Discovers New File Format Analyzers in Go
-&lt;/div&gt;
-&lt;h2 id="what"&gt;What?&lt;/h2&gt;
-&lt;p&gt;I want to discuss a particular design pattern in go through a &lt;a href="https://github.com/aquasecurity/trivy/pull/8897"&gt;PR&lt;/a&gt; which I raised in the open source project &lt;a href="https://github.com/aquasecurity/trivy"&gt;trivy&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="what-is-trivy"&gt;What is trivy?&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://trivy.dev"&gt;Trivy&lt;/a&gt; is an open source vulnerability scanner. You could use Trivy to find vulnerabilities (CVE) &amp;amp; misconfigurations (IaC) across code repositories, binary artifacts, container images, Kubernetes clusters, and more.&lt;/p&gt;
-&lt;p&gt;Since it is open source it used in extensively in build and deploy pipelines across projects. I used trivy in my build pipelines to scan images, configuration, licenses and most importantly - &lt;strong&gt;vulnerabilities&lt;/strong&gt; in the source code.&lt;/p&gt;</description></item><item><title>Staring inside programs: ELF</title><link>https://sneaky-potato.github.io/blog/elf/</link><pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/elf/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+So if you are someone who has written any form of backend APIs, web servers or network programming, this article is going to be perfect for you.&lt;/p&gt;</description></item><item><title>Staring inside programs: ELF</title><link>https://sneaky-potato.github.io/blog/elf/</link><pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/elf/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 To the level where hexadecimals appear
 &lt;/div&gt;
 &lt;h2 id="elf"&gt;ELF&lt;/h2&gt;

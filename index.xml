@@ -7,7 +7,7 @@
 &lt;p&gt;At the time of writing this article, I am employed as a fullstack software engineer and a lot of my work intersects with writing backend microservices.
 Microservices that scale for traffic. I primarily use &lt;a href="https://go.dev/"&gt;Go&lt;/a&gt; to write these backend APIs.
 Often times, I think about how backend servers are implemented internally and I decided to research a bit on the topic and that is the discussion of this very article.
-So if you are someone who has written any form of backend APIs, web servers or network programming, this article is going to be perfect for you.&lt;/p&gt;</description></item><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/blog/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+So if you are someone who has written any form of backend APIs, web servers or network programming, this article is going to be perfect for you.&lt;/p&gt;</description></item><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/oss/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/oss/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 How Trivy Dynamically Discovers New File Format Analyzers in Go
 &lt;/div&gt;
 &lt;h2 id="what"&gt;What?&lt;/h2&gt;
