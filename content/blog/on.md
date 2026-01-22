@@ -58,3 +58,4 @@ Even I wouldn't expect myself to be this so descriptive lol. That's like too muc
 ~ Me
 
 I just can't generalize. It has to be different, I know it. Like, it feels like an island, too far and too cool. Must drop some good easters down there.
+

@@ -26,3 +26,4 @@ Has been a year and thing’s are going awesome. So she’s from Dell and her na
 >Here’s a random thing you can try doing: make a directory / file and name it `con` in windows :D  
 
 [^1]: Channel’s an absolute gem for the low-end-peripheral junta [Low Spec Gamer](https://www.youtube.com/channel/UCQkd05iAYed2-LOmhjzDG6g)
+
