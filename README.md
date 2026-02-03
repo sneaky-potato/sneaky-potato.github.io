@@ -2,11 +2,11 @@
 
 >Wanting to exploit the easy deployment through [GitHub Pages](https://pages.github.com/) and content management using [Hugo](https://gohugo.io/), there I was, writing another one of my [TILs](https://sneaky-potato.github.io/til/)
 
-Repository for personal webiste
+Repository for personal webiste.
 
 ## Theme
 
-Using the awesome [Congo](https://jpanther.github.io/congo/) theme built for Hugo.
+Using the awesome [theme](https://github.com/hugo-sid/hugo-blog-awesome) theme built for Hugo.
 
 ## Website structure
 
@@ -16,7 +16,7 @@ Ugh don't mind but there was no point of creating this README but then it wouldn
 
 ## Domain
 
-Currently using the ```.ml``` domain provided by [Freenom](https://www.freenom.com/)
+GitHub pages.
 
 ## DNS and CDN Refernce
 
