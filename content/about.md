@@ -15,6 +15,8 @@ You are currently having a one-sided-textual-probably-monotonous-(tryhard?)-talk
 
 I'm an undergraduate student from the department of **Computer Science and Engineering** at **Indian Institute of Technology, Kharagpur**.
 
+These days, I’m most excited about understanding how things work *under the hood* from language runtimes and kernel-adjacent systems to distributed systems internals and low-level performance behavior.
+
 In my free time you'd probably find me watching some anime series, reading some book or reading one of the blogs I follow.
 
 If you're bored, let's have a chat. I'd absolutely enjoy your views (and would love to give you my views on your views), thoughts, experiences.
@@ -25,15 +27,22 @@ PS: If I ever happen to meet you for the first time I'm gonna stand next to you 
 
 ## Tech Stack
 
-I love tinkering with stuff and code sometimes.
+I love tinkering with systems and code sometimes.
 
 I like to think of my background bit like a pizza. The base is Mathematics, the sauce is Engineering and Computer Science, and the toppings, well, the toppings will depend on the project that I’m working on at the time.
 
-I've worked in both frontend and  backend development. I've done courses on Image processing and Deep Learning. Also, recently I've started reading about software design patterns and have developed interest in systems.
+Over time, my interests have shifted strongly toward:
 
-My current OS is **Arch Linux**
+- **Systems programming** (C, Go, runtimes, performance)
+- **Linux internals** and kernel-adjacent development
+- **Distributed systems** and infrastructure software
 
-My GitHub [profile](https://github.com/sneaky-potato/) would be a more accurate representation of this section I guess.
+I actively contribute to open-source projects in these areas including distributed systems and kernel-adjacent runtimes and I care a lot about correctness, performance, and maintainability.
+
+There’s a dedicated page for that here: [open source contributions](/oss)
+
+
+My GitHub [profile](https://github.com/sneaky-potato/) is usually the most accurate snapshot of what I’m currently hacking on.
 
 ## Non Tech Stack
 
