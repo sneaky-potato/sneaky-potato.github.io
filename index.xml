@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Lunatik, lua inside kernel boundary</title><link>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</link><pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 06 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>What next in software field?</title><link>https://sneaky-potato.github.io/blog/whats-next/</link><pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/blog/whats-next/</guid><description>&lt;h1 id="too-much-noise"&gt;Too much noise&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Everyday they drop a new bomb in this field, don&amp;rsquo;t they?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Anthropic just dropped another major development: they made AI agents create a c compiler which compiles Linux, Postgres, Redis and even Doom.
+You can read about it &lt;a href="https://www.anthropic.com/engineering/building-c-compiler"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="being-ahead-in-curve"&gt;Being ahead in curve&lt;/h2&gt;
+&lt;p&gt;I think about this quite regularly. Software field has become too much crowded. People obsess over getting better
+not than themselves, but better than others. Why? Because of money, fame and what not.
+Apparently software provides a fairly straight path to stable job which can pay your bills.&lt;/p&gt;</description></item><item><title>Lunatik, lua inside kernel boundary</title><link>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</link><pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate><guid>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 Controlling low level components with a high level language
 &lt;/div&gt;
 &lt;h2 id="what"&gt;What?&lt;/h2&gt;
