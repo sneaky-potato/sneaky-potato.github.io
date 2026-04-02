@@ -49,8 +49,11 @@ title = 'Potato'
   avatar = "chasma.jpeg" # put the file in assets folder; also ensure that image has same height and width
   intro = "Ashwani Kumar Kamal"
   name = "Ashwani Kumar Kamal"
+  email = "ashwanikamal.im421@gmail.com"
   description = "I am a builder, a tinkerer, and a computers person."
 
 [[params.socialIcons]]
   name = "github"
   url = "https://github.com/sneaky-potato"
+
+ignoreLogs = ['warning-goldmark-raw-html']
