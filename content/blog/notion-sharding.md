@@ -9,7 +9,7 @@ tags = [
 enableEmoji = true
 +++
 
-Decisions taken by Notion team to shard their massive postgres database:
+Decisions taken by Notion[^1] team to shard their massive postgres database:
 
 ## 1. Shard by ownership
 
@@ -111,9 +111,19 @@ As a precaution, the **migration and verification logic were implemented by
 different people**. Otherwise, there was a greater chance of someone making the
 same error in both stages, weakening the premise of verification.
 
-The link to the original blog by them: [Herding elephants: Lessons learned from sharding Postgres at Notion](https://www.notion.com/blog/sharding-postgres-at-notion)
+The link to the original blog can be found at the end of this article.
+
+## 5. Re-sharding without downtime
+
+Shortly after this the Notion team again needed to shard the data into more
+databases[^2]. But this time they smartly rolled out the update without
+requiring downtime.
 
 Also postgres natively supports creating publishers and subscribers via
 logical replication. Reference [here](https://www.postgresql.org/docs/current/logical-replication.html)
+Video explaining logical replication with a tutorial [here](https://www.youtube.com/watch?v=OvSzLjkMmQo)
 
-Part 2 of the blog can be found [here](https://www.notion.com/blog/the-great-re-shard)
+---
+
+[^1]: Part 1 of Notion's blog on sharding: [Herding elephants: Lessons learned from sharding Postgres at Notion](https://www.notion.com/blog/sharding-postgres-at-notion)
+[^2]: Part 2 of Notion's blog on sharding: [The Great Re-shard: adding Postgres capacity (again) with zero downtime](https://www.notion.com/blog/the-great-re-shard)

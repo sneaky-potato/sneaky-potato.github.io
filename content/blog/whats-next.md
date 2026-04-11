@@ -10,7 +10,7 @@ math: true
 
 > Everyday they drop a new bomb in this field, don't they?
 
-Anthropic just dropped another major development: they made AI agents create a c compiler which compiles Linux, Postgres, Redis and even Doom.
+Anthropic just dropped another major development: they made AI agents create a C compiler which compiles Linux, Postgres, Redis and even Doom.
 You can read about it [here](https://www.anthropic.com/engineering/building-c-compiler)
 
 ## Being ahead in curve
@@ -21,25 +21,25 @@ Apparently software provides a fairly straight path to stable job which can pay 
 
 Sure, it does pay my bills but I did not enter this field because I wanted to pay my bills.
 
-### Beauty, layes, android
+### Beauty, layers, android
 
 My one of the earliest memories of getting introduced to programming is hearing about C++.
 I got to know that is a prgramming language, I am talking about sometime in 2015. A friend of mine
-told me about backbox operating system and how some prople use it to hack instagram profiles.
+told me about blackbox operating system and how some prople use it to hack instagram profiles.
 
 All this was fascinating to me. This is also the time I got introduced to rooting android phones.
 And I did, I followed a youtube tutorial (with Avicii song in background) and flashed a custom ROM in one of the older phones.
 
 At one point I even got worried when I learnt about how Google application need to installed separately[^1].
-I mean, imagine an android with no playstore. This was first time I looked at this as an abstraction layer.
+I mean, imagine an Android with no Play Store. This was first time I looked at this as an abstraction layer.
 
 Yes, I realized how everything in software is just another layer that engineers have put to hide the details
 from people operating above that layer.
 
 ### Linux
 
-What did I do next? Well, I followed another video and setup a virtual box vm with Kali Linux.
-The objective was to learn to hack instagram profiles, ofcourse. But I learnt more about Linux through this experience.
+What did I do next? Well, I followed another video and setup a virtual box machine with Kali Linux.
+The objective was to learn to hack instagram profiles, of course. But I learnt more about Linux through this experience.
 
 ## CS
 
@@ -48,16 +48,20 @@ I solved a few CTFs with my other system nerd freinds and it was fun.
 
 ### COA + OS
 
-I got hooked into COA and how OS abstracts your code. How it runs your code. I read about systems whenever I got chance and started documenting things as well.
-I installed Arch Linux (yes I use Arch btw), and setup everything from the bare bones (no hyperland, mind you) with bspwm + polybar + sxhkd + dunst.
+I got hooked into COA and how OS abstracts your code. How it runs your code. I
+read about systems whenever I got chance and started documenting things as
+well. I installed Arch Linux (yes I use Arch btw), and setup everything from the bare
+bones (no hyperland, mind you) with bspwm + polybar + sxhkd + dunst. You can
+read more about some of the nuances in my dotfiles [here](https://sneaky-potato.github.io/notes/dotfiles/)
 
 If all of this feels alien to you, don't worry, I am a very big nerd about controlling my things down to a lower level detail.
 And I like it that way.
 
 ### Open source + tinkerer
 
-I am a tinkerer by nature. I do software because I am mad about software. I started open source and contributing to other codebases
-because I like this idea of free software.
+I am a tinkerer by nature. I do software simply because I am mad about
+software. I started open source and contributing to other codebases
+because I like the idea of free software.
 
 ### People that inspire me
 
@@ -70,11 +74,14 @@ because I like this idea of free software.
 
 Because software is layers upon layers of abstraction hiding elegant chaos
 underneath. I want to understand it all, from registers to distributed
-consensus. I want to perish in doing the impossible to drown in this ocean of
+consensus. 
+
+To put it simply I want to perish in doing the impossible. To drown in this ocean of
 knowledge, and maybe, just maybe, surface with something new.
 
-And I want to setup a self hosted homelab so that I can do cool shit there. I dream of owning a garage one day with my experiments,
-content with my own shit, unbothered by the crisis outside.
+And I want to setup a self hosted homelab so that I can do cool shit there. I
+dream of owning a garage one day with my experiments, content with my own shit,
+unbothered by the crisis outside.
 
 See my experiments here: https://sneaky-potato.github.io/notes.
 
