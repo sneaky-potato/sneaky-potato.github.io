@@ -1,6 +1,6 @@
 +++
 author = "sneaky-potato"
-title = "Sharding database in Notion"
+title = "Sharding databases: Lessons from Notion"
 date = "2026-04-09"
 description = "sharding postgres comes with some resposbilities"
 tags = [
@@ -103,7 +103,7 @@ monolith.
 
 Before migrating read queries, they added a flag to fetch data from both old
 and new databases (known as [dark reading](https://slack.engineering/re-architecting-slacks-workspace-preferences-how-to-move-to-an-eav-model-to-support-scalability/)).
-We records are compared and the sharded copy is discarded, logging discrepancies
+The records are compared and the sharded copy is discarded, logging discrepancies
 in the process. Introducing dark reads increases API latency, but provides
 confidence that the switch-over would be seamless.
 
@@ -119,8 +119,31 @@ Shortly after this the Notion team again needed to shard the data into more
 databases[^2]. But this time they smartly rolled out the update without
 requiring downtime.
 
-Also postgres natively supports creating publishers and subscribers via
-logical replication. Reference [here](https://www.postgresql.org/docs/current/logical-replication.html)
+### a. Set new shards
+
+After capacity planning they decided to further triple the databases back in 2023.
+So the number of instances in their fleet would go from 32 to 96 machines.
+
+They used Terraform to automate the provisioning process and configured the new
+databases with the smaller instance types and disks, since they now would each
+need to handle much less traffic.
+
+### b. Synchronization
+
+I recently came across a powerful capability of PostgreSQL which is
+[logical replication](https://www.postgresql.org/docs/current/logical-replication.html).
+This means Postgres natively supports creating publishers, subscribers and creating
+sync processes between them.
+
+They used built-in Postgres logical replication to copy over the historical 
+data and continuously apply new changes to the new databases. They wrote 
+tooling to set up 3 Postgres publications on each existing database, 
+covering 5 logical schemas apiece. 
+
+All the tables were added from the respective logical schemas to the
+publications. On the new databases, subscriptions were created to consume
+one of the 3 publications, which copied over the relevant set of data.
+
 Video explaining logical replication with a tutorial [here](https://www.youtube.com/watch?v=OvSzLjkMmQo)
 
 ---
