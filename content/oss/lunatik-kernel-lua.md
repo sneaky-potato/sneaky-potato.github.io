@@ -1,7 +1,7 @@
 ---
-title: "Lunatik, lua inside kernel boundary"
+title: "Lunatik, Lua inside kernel boundary"
 date: 2026-01-31
-description: "lua, open-source, design-patterns"
+description: "Lua, open-source, design-patterns"
 tags: ["life"]
 ---
 
