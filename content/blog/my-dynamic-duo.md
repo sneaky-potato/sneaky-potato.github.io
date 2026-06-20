@@ -1,13 +1,10 @@
-+++
-author = "sneaky-potato"
-title = "My Dynamic Duo"
-date = "2021-11-10"
-description = "nagging about my two computer devices"
-tags = [
-    "nostalgia",
-]
-enableEmoji = true
-+++
+---
+title: "My Dynamic Duo"
+date: "2021-11-10"
+description: "nagging about my two computer devices"
+tags: ["nostalgia"]
+enableEmoji: true
+---
 
 >Disclaimer: This post is absolutely not about my butt curves. Now let’s start this thing off with a boring-made-up quote
 

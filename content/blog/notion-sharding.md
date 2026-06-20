@@ -1,13 +1,10 @@
-+++
-author = "sneaky-potato"
-title = "Sharding databases: Lessons from Notion"
-date = "2026-04-09"
-description = "sharding postgres comes with some resposbilities"
-tags = [
-    "tech",
-]
-enableEmoji = true
-+++
+---
+title: "Sharding databases: Lessons from Notion"
+date: "2026-04-09"
+description: "sharding postgres comes with some resposbilities"
+tags: ["tech"]
+enableEmoji: true
+---
 
 Decisions taken by Notion[^1] team to shard their massive postgres database:
 
