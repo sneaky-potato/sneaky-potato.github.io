@@ -1,13 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Fri, 06 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>What next in software field?</title><link>https://sneaky-potato.github.io/blog/whats-next/</link><pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/whats-next/</guid><description>&lt;h1 id="too-much-noise"&gt;Too much noise&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Sharding databases: Lessons from Notion</title><link>https://sneaky-potato.github.io/blog/notion-sharding/</link><pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/notion-sharding/</guid><description>&lt;p&gt;Decisions taken by Notion&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt; team to shard their massive postgres database:&lt;/p&gt;
+&lt;h2 id="1-shard-by-ownership"&gt;1. Shard by ownership&lt;/h2&gt;
+&lt;p&gt;Everything in Notion revolves around a &lt;code&gt;block&lt;/code&gt;. They shard all data transitively
+related to a block.&lt;/p&gt;
+&lt;p&gt;Instead of&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;block&lt;/code&gt; table - shard 1&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;comment&lt;/code&gt; table - shard 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;They do: everything owned by block X - shard N.
+The principle is data that must be updated together must live together.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt;
+Imagine we shard like this: one shard contains &lt;code&gt;block&lt;/code&gt; and another contains
+&lt;code&gt;comment&lt;/code&gt;. Now if a user deletes a block, we need to update the comments.&lt;/p&gt;</description></item><item><title>What next in software field?</title><link>https://sneaky-potato.github.io/blog/whats-next/</link><pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/whats-next/</guid><description>&lt;h1 id="too-much-noise"&gt;Too much noise&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Everyday they drop a new bomb in this field, don&amp;rsquo;t they?&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Anthropic just dropped another major development: they made AI agents create a c compiler which compiles Linux, Postgres, Redis and even Doom.
+&lt;p&gt;Anthropic just dropped another major development: they made AI agents create a C compiler which compiles Linux, Postgres, Redis and even Doom.
 You can read about it &lt;a href="https://www.anthropic.com/engineering/building-c-compiler"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="being-ahead-in-curve"&gt;Being ahead in curve&lt;/h2&gt;
 &lt;p&gt;I think about this quite regularly. Software field has become too much crowded. People obsess over getting better
 not than themselves, but better than others. Why? Because of money, fame and what not.
-Apparently software provides a fairly straight path to stable job which can pay your bills.&lt;/p&gt;</description></item><item><title>Lunatik, lua inside kernel boundary</title><link>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</link><pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Apparently software provides a fairly straight path to stable job which can pay your bills.&lt;/p&gt;</description></item><item><title>Lunatik, Lua inside kernel boundary</title><link>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</link><pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 Controlling low level components with a high level language
 &lt;/div&gt;
 &lt;h2 id="what"&gt;What?&lt;/h2&gt;
@@ -67,7 +80,36 @@ border: 1px solid var(--color-border);
 background: #000;
 }
 &lt;/style&gt;
-&lt;/p&gt;</description></item><item><title>Dynamics of a dynamic array</title><link>https://sneaky-potato.github.io/blog/dynamic-array/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/dynamic-array/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+&lt;/p&gt;</description></item><item><title>Distributed Hash Table</title><link>https://sneaky-potato.github.io/blog/dht/</link><pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/dht/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+Data spread across nodes, each knowing whereabouts of the other
+&lt;/div&gt;
+&lt;h2 id="distributed-key-value-store"&gt;Distributed Key Value Store&lt;/h2&gt;
+&lt;p&gt;Imagine data so large that one server cannot store it, we need to split the data into multiple nodes.
+So, say there are &lt;code&gt;n&lt;/code&gt; nodes storing some key values as shown in this table&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Node&lt;/th&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;n1&lt;/td&gt;
+&lt;td&gt;ka, kb, kc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;n2&lt;/td&gt;
+&lt;td&gt;kd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;n3&lt;/td&gt;
+&lt;td&gt;ka, ke&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Now, a new node &lt;code&gt;n4&lt;/code&gt; comes and establishes contact with &lt;code&gt;n2&lt;/code&gt;. This new node &lt;code&gt;n4&lt;/code&gt; wants &lt;code&gt;ke&lt;/code&gt;, but &lt;code&gt;n2&lt;/code&gt; unfortunately does not have it.
+We should be able to handle this very case.&lt;/p&gt;</description></item><item><title>Dynamics of a dynamic array</title><link>https://sneaky-potato.github.io/blog/dynamic-array/</link><pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/dynamic-array/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 Memory and this beauty: $(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$)
 &lt;/div&gt;
 &lt;h2 id="changing-sizes"&gt;Changing sizes&lt;/h2&gt;
