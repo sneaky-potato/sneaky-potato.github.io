@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Life on Potato</title><link>https://sneaky-potato.github.io/tags/life/</link><description>Recent content in Life on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/life/index.xml" rel="self" type="application/rss+xml"/><item><title>Lunatik, Lua inside kernel boundary</title><link>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</link><pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
-Controlling low level components with a high level language
-&lt;/div&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Life on Potato</title><link>https://sneaky-potato.github.io/tags/life/</link><description>Recent content in Life on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/life/index.xml" rel="self" type="application/rss+xml"/><item><title>Lunatik, Lua inside kernel boundary</title><link>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</link><pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/lunatik-kernel-lua/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Controlling low level components with a high level language&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id="what"&gt;What?&lt;/h2&gt;
-&lt;p&gt;Lunatik is a framework for scripting the Linux kernel using Lua. It allows developers to write kernel-resident logic in a high-level language, while still interacting directly with kernel facilities such as networking, devices, timing, and system state.&lt;/p&gt;
+&lt;p&gt;Lunatik is a framework for scripting the &lt;strong&gt;Linux kernel&lt;/strong&gt; using &lt;strong&gt;Lua&lt;/strong&gt;. It
+allows developers to write kernel-resident logic in a high-level language,
+while still interacting directly with kernel facilities such as networking,
+devices, timing, and system state.&lt;/p&gt;
 &lt;p&gt;At a high level, Lunatik consists of:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A modified Lua interpreter that runs inside the Linux kernel&lt;/li&gt;
@@ -11,7 +14,8 @@ Controlling low level components with a high level language
 &lt;li&gt;User-space CLI tool (lunatik) to load, run, and manage kernel Lua environments&lt;/li&gt;
 &lt;li&gt;Lua bindings that expose kernel facilities to Lua scripts&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This architecture allows Lua to be used as a control and orchestration language inside the kernel, enabling rapid prototyping, instrumentation, and kernel-adjacent logic without writing everything in C.&lt;/p&gt;</description></item><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/oss/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
+&lt;h2 id="why-script-the-kernel"&gt;Why Script the Kernel?&lt;/h2&gt;
+&lt;p&gt;Traditionally, Linux kernel development is done entirely in C, which offers maximum control and performance, but at the cost of:&lt;/p&gt;</description></item><item><title>Trivy, Go's init(), and the Magic of Dynamic Analyzer Discovery</title><link>https://sneaky-potato.github.io/oss/trivy-analyzers/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/trivy-analyzers/</guid><description>&lt;div class="lead !mb-9 text-xl"&gt;
 How Trivy Dynamically Discovers New File Format Analyzers in Go
 &lt;/div&gt;
 &lt;h2 id="what"&gt;What?&lt;/h2&gt;

@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on Potato</title><link>https://sneaky-potato.github.io/tags/tech/</link><description>Recent content in Tech on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Sharding databases: Lessons from Notion</title><link>https://sneaky-potato.github.io/blog/notion-sharding/</link><pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/notion-sharding/</guid><description>&lt;p&gt;Decisions taken by Notion&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt; team to shard their massive postgres database:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on Potato</title><link>https://sneaky-potato.github.io/tags/tech/</link><description>Recent content in Tech on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Fri, 26 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Summer of Code: 0x02</title><link>https://sneaky-potato.github.io/oss/gsoc-02/</link><pubDate>Fri, 26 Jun 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-02/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;we start with some raw code contribution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Disclaimer: the below process is not a roadmap for GSoC. It is just a document of my own
+experience which I want to share with anyone interested.&lt;/p&gt;
+&lt;h2 id="contributor-phase"&gt;Contributor phase&lt;/h2&gt;
+&lt;p&gt;I already knew about LabLua organization because one of my batchmates had participated in
+GSoC in 2024 &lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;. Naturally curious I tried understanding the codebase. I was able to build
+the project and run the example scripts, and I got interested. I checked open issues and
+saw one related to &lt;a href="https://github.com/luainkernel/lunatik/issues/126"&gt;LLDP example&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Google Summer of Code: 0x01</title><link>https://sneaky-potato.github.io/oss/gsoc-01/</link><pubDate>Thu, 25 Jun 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-01/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;It is never too late to do open source.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="huh"&gt;Huh?&lt;/h2&gt;
+&lt;p&gt;It has been roughly 2 months since I started contributing to &lt;a href="https://github.com/luainkernel/lunatik"&gt;Lunatik&lt;/a&gt;
+as part of GSoC 2026. You can find the project description &lt;a href="https://summerofcode.withgoogle.com/programs/2026/projects/IHF0HPaF"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have been dabbling into Linux traffic controller (tc), Extensible scheduler class (sched_ext)
+and a lot of eBPF code on a daily basis for this project. I knew none of it when the year began.&lt;/p&gt;
+&lt;p&gt;I am a full time employee at one of the energy technology giants, where I work
+as a full stack software engineer. In my free time, I contribute to systems software
+and low level tooling pojects and this is how I got introduced to this amazing
+kernel project.&lt;/p&gt;</description></item><item><title>Sharding databases: Lessons from Notion</title><link>https://sneaky-potato.github.io/blog/notion-sharding/</link><pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/blog/notion-sharding/</guid><description>&lt;p&gt;Decisions taken by Notion&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt; team to shard their massive postgres database:&lt;/p&gt;
 &lt;h2 id="1-shard-by-ownership"&gt;1. Shard by ownership&lt;/h2&gt;
 &lt;p&gt;Everything in Notion revolves around a &lt;code&gt;block&lt;/code&gt;. They shard all data transitively
 related to a block.&lt;/p&gt;
