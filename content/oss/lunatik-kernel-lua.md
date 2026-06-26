@@ -5,12 +5,13 @@ description: "Lua, open-source, design-patterns"
 tags: ["life"]
 ---
 
-{{< lead >}}
-Controlling low level components with a high level language
-{{< /lead >}}
+>Controlling low level components with a high level language
 
 ## What?
-Lunatik is a framework for scripting the Linux kernel using Lua. It allows developers to write kernel-resident logic in a high-level language, while still interacting directly with kernel facilities such as networking, devices, timing, and system state.
+Lunatik is a framework for scripting the **Linux kernel** using **Lua**. It
+allows developers to write kernel-resident logic in a high-level language,
+while still interacting directly with kernel facilities such as networking,
+devices, timing, and system state.
 
 At a high level, Lunatik consists of:
 - A modified Lua interpreter that runs inside the Linux kernel
@@ -18,8 +19,6 @@ At a high level, Lunatik consists of:
 - Lua-based device driver layer
 - User-space CLI tool (lunatik) to load, run, and manage kernel Lua environments
 - Lua bindings that expose kernel facilities to Lua scripts
-
-This architecture allows Lua to be used as a control and orchestration language inside the kernel, enabling rapid prototyping, instrumentation, and kernel-adjacent logic without writing everything in C.
 
 ## Why Script the Kernel?
 
@@ -38,7 +37,7 @@ This makes Lunatik particularly useful for:
 I've been an active contributor to Lunatik, focusing on performance, API correctness, and low-level networking support. Some of my notable contributions include:
 
 ### Improving Method Dispatch Performance
-Lunatik previously used index-based (__index) lookups for method dispatch, which introduced extra allocations and overhead in hot paths.
+Lunatik previously used index-based (`__index`) lookups for method dispatch, which introduced extra allocations and overhead in hot paths.
 I redesigned this mechanism to eagerly wrap class methods at initialization, eliminating repeated index lookups during runtime. This:
 - Reduced dynamic allocations in hot paths
 - Simplified the method call path

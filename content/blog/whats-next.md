@@ -24,8 +24,8 @@ Sure, it does pay my bills but I did not enter this field because I wanted to pa
 ### Beauty, layers, android
 
 My one of the earliest memories of getting introduced to programming is hearing about C++.
-I got to know that is a prgramming language, I am talking about sometime in 2015. A friend of mine
-told me about blackbox operating system and how some prople use it to hack instagram profiles.
+I got to know that it is a prgramming language, I am talking about sometime in 2015. A friend of mine
+told me about backbox operating system and how some prople use it to hack instagram profiles.
 
 All this was fascinating to me. This is also the time I got introduced to rooting android phones.
 And I did, I followed a youtube tutorial (with Avicii song in background) and flashed a custom ROM in one of the older phones.
@@ -93,3 +93,4 @@ I would love to chat with you.
 ---
 
 [^1]: How to Guide - FLashing vanilla ROMs + GAPPs | [XDA Forums](https://xdaforums.com/t/flashing-vanilla-roms-gapps.4673116/)
+

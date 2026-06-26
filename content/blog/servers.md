@@ -3,7 +3,6 @@ title: "Sockets, servers and scalability"
 date: 2025-10-25
 description: "linux, networks, sockets"
 tags: ["tech"]
-math: true
 ---
 
 # Scaling a server to handle many requests
@@ -318,3 +317,4 @@ Following table summarises the whole discussion
 | `fork()`  | ~1–2 MB         | process + fd   | 500–1k          | legacy UNIX daemons                                     |
 | `pthread` | ~1 MB           | thread + fd    | 1k–5k           | simple chat/web servers                                 |
 | `epoll()` | ~few KB         | fd only        | 100k+           | modern high-performance servers (nginx, Go, Rust, etc.) |
+
