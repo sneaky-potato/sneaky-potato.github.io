@@ -9,8 +9,62 @@ classid, filter.
 But I won&rsquo;t go into details because that will bloat this post to another 10k words.</p><p>For simplicity you can consider this:</p><blockquote><p>XDP decides whether a packet should exist. TC decides how the packet should be treated.</p></blockquote><p>I&rsquo;d keep this simple and present you this architecture for the sake of this post.
 Consider the path of the packet on its journey outside the host (from application to network card,
 or as system admins would call it, <strong>egress</strong>):</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-0 src=/_4605552409755716862.svg><p>Here in this diagram, <strong>fiter</strong> is a tc fiter, like HTB or <a href=https://linux.die.net/man/8/tc-htb>hierarchy token bucket</a>.
-Likewise <strong>qdisc</strong> is tc queue discipline, which are queues with bandwidths.</p><h2 id=classify-sni-at-egress>Classify SNI at egress</h2><p>So my job was to extend Lunatik and have it interact with tc. I added a similar kfunc called <code>bpf_luatc_run</code>
-which operates on <code>struct sk_buff</code> and lets you write packet scheduling in Lua.</p><p>Quite similar to the architecture presented in last post:</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-1 src=/_14784843966430485697.svg><p>The whole process is documented <a href=https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#sniclassify>here</a>
-The example is a low level packer classifier which assigns priorities based on domain names.</p><hr></div></article><script src=https://utteranc.es/client.js repo=sneaky-potato/sneaky-potato.github.io issue-term=pathname label=comment theme=github-light crossorigin=anonymous async></script></main></div><footer class=footer><span class=footer_item></span>&nbsp;<div class=footer_social-icons><a href=https://github.com/sneaky-potato target=_blank rel="noopener noreferrer me" title=Github><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><small class=footer_copyright>© 2026 Ashwani Kumar Kamal.
+Likewise <strong>qdisc</strong> is tc queue discipline, which are queues with bandwidths.</p><h2 id=classify-sni-at-egress>Classify SNI at egress</h2><p>So my job was to extend Lunatik and have it interact with tc.</p><p>I added a similar kfunc called <code>bpf_luatc_run</code>
+which operates on <code>struct sk_buff</code> and lets you write packet scheduling policies in Lua.
+We still need bpf layer and much like xdp, we need 2 files:
+So basically the user needs to create two files:</p><ol><li><code>tc.c</code>: eBPF program which calls a kfunc <code>bpf_luatc_run</code> defined in Lunatik.</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>extern</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>bpf_luatc_run</span>(<span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>key, ...) __ksym;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> <span style=color:#66d9ef>char</span> runtime[] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;sni&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>SEC</span>(<span style=color:#e6db74>&#34;classifier&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>classify</span>(<span style=color:#66d9ef>struct</span> __sk_buff <span style=color:#f92672>*</span>skb)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    __u32 key <span style=color:#f92672>=</span> skb<span style=color:#f92672>-&gt;</span>hash;
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* flow_cache is an eBPF map which stores
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * priority for a specific traffic flow
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
+</span></span><span style=display:flex><span>    __u32 <span style=color:#f92672>*</span>priority <span style=color:#f92672>=</span> <span style=color:#a6e22e>bpf_map_lookup_elem</span>(<span style=color:#f92672>&amp;</span>flow_cache, <span style=color:#f92672>&amp;</span>key);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (priority) {
+</span></span><span style=display:flex><span>        skb<span style=color:#f92672>-&gt;</span>priority <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>priority;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> TC_ACT_OK;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>/* send only client hello packets to Lunatik */</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>check_pkt_is_client_hello</span>(skb))
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> TC_ACT_OK;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>int</span> action <span style=color:#f92672>=</span> <span style=color:#a6e22e>bpf_luatc_run</span>(runtime, ...);
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> action <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>?</span> TC_ACT_OK : action;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=2><li><code>sni.lua</code>: contains the logic to set packet priority, but in Lua</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>local</span> tc     <span style=color:#f92672>=</span> require(<span style=color:#e6db74>&#34;tc&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> action <span style=color:#f92672>=</span> require(<span style=color:#e6db74>&#34;linux.tc&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> policy <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;netflix%.com&#34;</span>] <span style=color:#f92672>=</span> TC_H_MAKE(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>20</span>),
+</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;zoom%.com&#34;</span>] <span style=color:#f92672>=</span> TC_H_MAKE(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>10</span>),
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>filter_sni</span>(ctx)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>local</span> skb <span style=color:#f92672>=</span> ctx:skb
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>local</span> sni <span style=color:#f92672>=</span> parse_sni(skb:data())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> pattern, classid <span style=color:#66d9ef>in</span> pairs(policy) <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> sni:match(pattern) <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>            skb.priority <span style=color:#f92672>=</span> classid
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>end</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>end</span>
+</span></span><span style=display:flex><span>    ctx:action(action.ACT_OK)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>end</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>xdp.attach(filter_sni)
+</span></span></code></pre></div><ol start=3><li>Create the actual tc classes and qdiscs:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>sudo tc qdisc del dev docker0 root 2&gt;/dev/null
+</span></span><span style=display:flex><span>sudo tc qdisc add dev docker0 root handle 1: htb default <span style=color:#ae81ff>30</span>
+</span></span><span style=display:flex><span>sudo tc class add dev docker0 parent 1: classid 1:10 htb rate 20mbit
+</span></span><span style=display:flex><span>sudo tc class add dev docker0 parent 1: classid 1:20 htb rate 10mbit
+</span></span></code></pre></div><ol start=4><li>Attach the eBPF classifier on egress:</li></ol><pre tabindex=0><code>sudo tc filter add dev docker0 parent 1: bpf da obj tc.o sec classifier
+</code></pre><p>The whole process is documented <a href=https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#sniclassify>here</a>
+The example is a low level packet classifier which assigns priorities based on domain names.</p><p>For this example, packets from <code>netflix.com</code> get a high bandwidth and those from
+<code>zoom.com</code> get a lower bandwidth.</p><p>Quite similar to the architecture presented in last post:</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-5 src=/_14784843966430485697.svg><hr></div></article><script src=https://utteranc.es/client.js repo=sneaky-potato/sneaky-potato.github.io issue-term=pathname label=comment theme=github-light crossorigin=anonymous async></script></main></div><footer class=footer><span class=footer_item></span>&nbsp;<div class=footer_social-icons><a href=https://github.com/sneaky-potato target=_blank rel="noopener noreferrer me" title=Github><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><small class=footer_copyright>© 2026 Ashwani Kumar Kamal.
 Powered by <a href=https://github.com/hugo-sid/hugo-blog-awesome target=_blank rel=noopener>Hugo blog awesome</a>.</small></footer><a href=# title="Go to top" id=totop><svg width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960"><path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197z"/></svg>
 </a><script src=https://sneaky-potato.github.io/js/main.min.35f435a5d8eac613c52daa28d8af544a4512337d3e95236e4a4978417b8dcb2f.js integrity="sha256-NfQ1pdjqxhPFLaoo2K9USkUSM30+lSNuSkl4QXuNyy8="></script></body></html>
