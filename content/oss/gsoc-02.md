@@ -5,7 +5,7 @@ description: "open-source"
 tags: ["tech"]
 ---
 
-> we start with some raw code contribution
+> We start with some raw code contribution.
 
 Disclaimer: the below process is not a roadmap for GSoC. It is just a document of my own
 experience which I want to share with anyone interested.

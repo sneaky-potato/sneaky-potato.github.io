@@ -3,10 +3,9 @@ title: "Google Summer of Code: 0x03"
 date: 2026-07-03
 description: "open-source"
 tags: ["tech"]
-mermaid: true
 ---
 
-> time to go into some specifics
+> Time to go into some specifics.
 
 Disclaimer: this post requires fair background of Linux operating
 system and eBPF.
@@ -84,21 +83,19 @@ to achieve this[^2]. BPF is a layer which will be required for interacting with 
 So basically the user needs to create two files:
 1. `xdp.c`: eBPF program which calls a kfunc `bpf_luaxdp_run` defined in Lunatik.
 ```c
-extern int bpf_luaxdp_run(char *key, size_t key__sz, struct xdp_md *xdp_ctx, void *arg, size_t arg__sz) __ksym;
+extern int bpf_luaxdp_run(char *key, ...) __ksym;
 
 static char runtime[] = "sni";
 
 SEC("xdp")
 int filter_https(struct xdp_md *ctx)
 {
-	/* send client hello packets to Lunatik */
-	if (!check_pkt_is_client_hello)
-        goto PASS;
+	/* send only client hello packets to Lunatik */
+	if (!check_pkt_is_client_hello(ctx))
+        return XDP_PASS;
 
-	int action = bpf_luaxdp_run(runtime, sizeof(runtime), ctx, &arg, sizeof(arg));
+	int action = bpf_luaxdp_run(runtime, ...);
 	return action < 0 ? XDP_PASS : action;
-pass:
-	return XDP_PASS;
 }
 ```
 - `sni.lua`: contains the logic to return xdp verdict, but in Lua
@@ -118,7 +115,6 @@ local function filter_sni(packet, argument)
     local sni = parse_sni(packet, argument)
 
 	verdict = blacklist[sni] and "DROP" or "PASS"
-	log(sni, verdict)
 	return action[verdict]
 end
 
@@ -133,12 +129,12 @@ Essentially this is what happens:
 direction: down
 
 driver: "Driver RX"
-ebpf: "eBPF Program\n(xdp.c)"
+ebpf: "eBPF Program\nxdp.c"
 kfunc: "bpf_luaxdp_run()"
 lua: "sni.lua"
-action: "XDP Verdict"
+stack: "Network Stack"
 
-driver -> ebpf: packet (xdp_md) {
+driver -> ebpf: struct xdp_md {
     style: {
         animated: true
     }
@@ -156,18 +152,27 @@ kfunc -> lua: invoke Lua {
 lua -> lua: parse SNI
 lua -> kfunc: XDP_PASS / XDP_DROP
 kfunc -> ebpf
-ebpf -> action
-action -> driver
+ebpf -> stack: XDP_PASS
 ```
+
+## But, why?
+
+If you know about netfilter tables and eBPF, you might ask why to even do all of this?
+It has been recently demonstrated that eBPF is turing complete [^3]. But the eBPF 
+verifier has strict limitations over how you can express code in eBPF. For instance,
+the sni matching example above, if implemented in eBPF will be very rigid and non
+intuitive. Also to load and compile eBPF programs is another headache. With this 
+architecture users can hot reload a policy written in Lua.
 
 If you've made it till here, kudos to you! Because now we have enough context when I 
 can finally start explaining my project.
 
-My project is to essentially extend this model to other Linux subsystems, namely
-TC, Sched and eBPF maps.
+My project is essentially to extend this model to other Linux subsystems, namely
+TC, Sched with a binding for eBPF maps.
  
 ---
 
 [^1]: The eXpress Data Path: [Fast programmable packet processing in the operating system kernel](https://dl.acm.org/doi/10.1145/3281411.3281443)
 [^2]: [XDPLua](https://victornogueirario.github.io/xdplua/)
+[^3]: Isovalent | [eBPF: Yes, it's Turing Complete](https://isovalent.com/blog/post/ebpf-yes-its-turing-complete/)
 
