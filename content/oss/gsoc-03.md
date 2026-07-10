@@ -98,7 +98,8 @@ int filter_https(struct xdp_md *ctx)
 	return action < 0 ? XDP_PASS : action;
 }
 ```
-- `sni.lua`: contains the logic to return xdp verdict, but in Lua
+
+2. `sni.lua`: contains the logic to return xdp verdict, but in Lua
 ```lua
 local xdp    = require("xdp")
 local action = require("linux.xdp")
@@ -107,7 +108,9 @@ local blacklist = {
 	"ebpf.io": true,
 }
 
-local function filter_sni(packet, argument)
+local function filter_sni(ctx)
+    local packet = ctx:packet()
+    local argument = ctx:argument()
 	if is_not_client_hello(packet) then
 		return action.PASS
 	end
@@ -115,7 +118,8 @@ local function filter_sni(packet, argument)
     local sni = parse_sni(packet, argument)
 
 	verdict = blacklist[sni] and "DROP" or "PASS"
-	return action[verdict]
+    ctx:action(action[verdict])
+	return
 end
 
 xdp.attach(filter_sni)
