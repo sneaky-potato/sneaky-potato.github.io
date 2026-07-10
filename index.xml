@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Summer of Code: 0x03</title><link>https://sneaky-potato.github.io/oss/gsoc-03/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-03/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;time to go into some specifics&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Summer of Code: 0x04</title><link>https://sneaky-potato.github.io/oss/gsoc-04/</link><pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-04/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Time to do some packet scheduling in Lua&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="packet-scheduling"&gt;Packet Scheduling&lt;/h2&gt;
+&lt;p&gt;After XDP, Linux has another low level subsystem, called TC or
+&lt;a href="https://tldp.org/HOWTO/Traffic-Control-HOWTO/intro.html"&gt;&lt;strong&gt;T&lt;/strong&gt;raffic &lt;strong&gt;C&lt;/strong&gt;ontroller&lt;/a&gt;.
+There is a userspace program with the &lt;a href="https://man7.org/linux/man-pages/man8/tc.8.html"&gt;same name&lt;/a&gt;
+which allows users to interact with the network scheduler.&lt;/p&gt;
+&lt;p&gt;There are some concepts associated with this whole architecture. There&amp;rsquo;s qdiscs,
+classid, filter.
+But I won&amp;rsquo;t go into details because that will bloat this post to another 10k words.&lt;/p&gt;
+&lt;p&gt;For simplicity you can consider this:&lt;/p&gt;</description></item><item><title>Google Summer of Code: 0x03</title><link>https://sneaky-potato.github.io/oss/gsoc-03/</link><pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-03/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Time to go into some specifics.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Disclaimer: this post requires fair background of Linux operating
 system and eBPF.&lt;/p&gt;
@@ -9,7 +20,7 @@ If you don&amp;rsquo;t know what this means, it is a technology inside Linux whi
 you to process network packets down to the lowest level.&lt;/p&gt;
 &lt;p&gt;At XDP, you can run a hook for processing packets even before the network stack
 touches it.&lt;/p&gt;</description></item><item><title>Google Summer of Code: 0x02</title><link>https://sneaky-potato.github.io/oss/gsoc-02/</link><pubDate>Fri, 26 Jun 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-02/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;we start with some raw code contribution&lt;/p&gt;
+&lt;p&gt;We start with some raw code contribution.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Disclaimer: the below process is not a roadmap for GSoC. It is just a document of my own
 experience which I want to share with anyone interested.&lt;/p&gt;
