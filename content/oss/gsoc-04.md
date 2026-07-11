@@ -58,7 +58,6 @@ So my job was to extend Lunatik and have it interact with tc.
 I added a similar kfunc called `bpf_luatc_run`
 which operates on `struct sk_buff` and lets you write packet scheduling policies in Lua.
 We still need bpf layer and much like xdp, we need 2 files:
-So basically the user needs to create two files:
 1. `tc.c`: eBPF program which calls a kfunc `bpf_luatc_run` defined in Lunatik.
 ```c
 extern int bpf_luatc_run(char *key, ...) __ksym;
@@ -129,8 +128,8 @@ sudo tc filter add dev docker0 parent 1: bpf da obj tc.o sec classifier
 The whole process is documented [here](https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#sniclassify)
 The example is a low level packet classifier which assigns priorities based on domain names.
 
-For this example, packets from `netflix.com` get a high bandwidth and those from
-`zoom.com` get a lower bandwidth.
+For this example, packets from `netflix.com` get a lower bandwidth and those from
+`zoom.com` get a higher bandwidth.
 
 Quite similar to the architecture presented in last post:
 ```kroki{type=d2}
@@ -160,7 +159,7 @@ kfunc -> lua: invoke Lua {
     }
 }
 lua -> lua: parse SNI
-lua -> kfunc: skb.classid
+lua -> kfunc: skb.classid = HIGH
 kfunc -> tc
 tc -> qdisc
 qdisc -> driver
