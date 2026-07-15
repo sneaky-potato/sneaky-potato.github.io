@@ -37,15 +37,19 @@ kernel: Kernel {
         stroke-dash: 3
         fill: white
     }
+    stack -> filter -> qdisc
 }
 
-app: Application
-driver: "Driver TX"
+app: Application {
+    near: top-left
+}
+driver: "Driver TX" {
+    near: bottom-right
+}
 
 app -> kernel.stack
-kernel.stack -> kernel.filter
-kernel.filter -> kernel.qdisc
 kernel.qdisc -> driver
+
 ```
 
 Here in this diagram, **fiter** is a tc fiter, like HTB or [hierarchy token bucket](https://linux.die.net/man/8/tc-htb).
@@ -92,8 +96,8 @@ local tc     = require("tc")
 local action = require("linux.tc")
 
 local policy = {
-    ["netflix%.com"] = TC_H_MAKE(1, 20),
-    ["zoom%.com"] = TC_H_MAKE(1, 10),
+    ["netflix%.com"] = TC_H_MAKE(1, 10),
+    ["zoom%.com"] = TC_H_MAKE(1, 20),
 }
 
 local function filter_sni(ctx)
@@ -109,37 +113,49 @@ local function filter_sni(ctx)
     ctx:action(action.ACT_OK)
 end
 
-xdp.attach(filter_sni)
+tc.attach(filter_sni)
 ```
 
-3. Create the actual tc classes and qdiscs:
+3. This example uses `docker0` as the inteface, you can use your own interface.
+Create the following script and run it with sudo.
+It will create the actual tc classes and qdiscs attached to the interface:
 ```sh
-sudo tc qdisc del dev docker0 root 2>/dev/null
-sudo tc qdisc add dev docker0 root handle 1: htb default 30
-sudo tc class add dev docker0 parent 1: classid 1:10 htb rate 20mbit
-sudo tc class add dev docker0 parent 1: classid 1:20 htb rate 10mbit
+#!/bin/bash
+TC="tc"
+IF="docker0"
+
+# clean up [any] existing root qdisc
+$TC qdisc del dev $IF root 2>/dev/null
+# create root HTB qdisc defaulting to class 1:10
+$TC qdisc add dev $IF root handle 1: htb default 10
+# create parent and leaf class
+$TC class add dev $IF parent 1: classid 1:1 htb rate 100mbit
+$TC class add dev $IF parent 1:1 classid 1:10 htb rate 30mbit prio 1
+$TC class add dev $IF parent 1:1 classid 1:20 htb rate 70mbit prio 2
+
+$TC qdisc add dev $IF clsact
 ```
 
 4. Attach the eBPF classifier on egress:
 ```
-sudo tc filter add dev docker0 parent 1: bpf da obj tc.o sec classifier
+sudo tc filter add dev docker0 egress bpf da obj tc.o sec classifier
 ```
 
 The whole process is documented [here](https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#sniclassify)
 The example is a low level packet classifier which assigns priorities based on domain names.
 
-For this example, packets from `netflix.com` get a lower bandwidth and those from
-`zoom.com` get a higher bandwidth.
+For this example, packets from `netflix.com` get a lower bandwidth (30%) and those from
+`zoom.com` get a higher bandwidth (70%).
 
 Quite similar to the architecture presented in last post:
 ```kroki{type=d2}
 direction: down
 
 stack: "Network Stack"
-tc: "eBPF Program\ntc.c"
+tc: "eBPF Program\ntc.o"
 kfunc: "bpf_luatc_run()"
 
-lua: "classify.lua"
+lua: "sni.lua"
 qdisc: "TC Qdisc"
 driver: "Driver TX"
 
@@ -159,10 +175,22 @@ kfunc -> lua: invoke Lua {
     }
 }
 lua -> lua: parse SNI
-lua -> kfunc: skb.classid = HIGH
+lua -> kfunc: skb.priority = HIGH
 kfunc -> tc
 tc -> qdisc
 qdisc -> driver
+```
+
+## Verify
+
+Watch the qdiscs in realtime.
+```sh
+watch -n 1 tc -s class show dev docker0
+```
+
+Generate some traffic usng curl.
+```sh
+docker run --rm -it alpine sh -c "apk add --no-cache curl && curl https://www.netflix.com > /dev/null"
 ```
 
 ---

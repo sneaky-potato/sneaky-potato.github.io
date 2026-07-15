@@ -133,7 +133,7 @@ Essentially this is what happens:
 direction: down
 
 driver: "Driver RX"
-ebpf: "eBPF Program\nxdp.c"
+ebpf: "eBPF Program\nxdp.o"
 kfunc: "bpf_luaxdp_run()"
 lua: "sni.lua"
 stack: "Network Stack"
