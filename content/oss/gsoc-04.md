@@ -91,7 +91,7 @@ class_hi -> driver
 ## TC, in simpler terms
 Imagine you run a mail room at an airport where packages are loaded onto
 planes. Important medical supplies get shipped instantly,
-while regular online shopping packages wait if gets crowded.
+while regular online shopping packages wait if it gets crowded.
 
 1. Qdisc is like conveyor belts: rules and structure for how packages wait in line.
 
@@ -163,17 +163,17 @@ local tc     = require("tc")
 local action = require("linux.tc")
 
 local policy = {
-    ["netflix%.com"] = TC_H_MAKE(1, 0x10),
-    ["zoom%.com"] = TC_H_MAKE(1, 0x20),
+    ["netflix%.com"] = TC_H_MAKE(1, 0x10), -- 0x00010010
+    ["zoom%.com"] = TC_H_MAKE(1, 0x20), -- 0x00010020
 }
 
 local function filter_sni(ctx)
-    local skb = ctx:skb
+    local skb = ctx:skb()
     local sni = parse_sni(skb:data())
 
     for pattern, classid in pairs(policy) do
         if sni:match(pattern) then
-            skb.classid = classid
+            skb.priority = classid
             break
         end
     end
@@ -214,7 +214,7 @@ The example is a low level packet classifier which assigns priorities based on d
 For this example, packets from `netflix.com` get a lower bandwidth (30%) and those from
 `zoom.com` get a higher bandwidth (70%).
 
-Quite similar to the architecture presented in last post:
+The following diagram summarizes the architecture described above:
 ```kroki{type=d2}
 direction: down
 
@@ -255,7 +255,7 @@ class_hi -> driver
 
 ## Verify
 
-Watch the qdiscs in realtime.
+Watch the classes in realtime.
 ```sh
 watch -n 1 tc -s class show dev eth0
 ```
