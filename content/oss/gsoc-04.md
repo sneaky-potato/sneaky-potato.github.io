@@ -15,7 +15,7 @@ There is a userspace program with the [same name](https://man7.org/linux/man-pag
 which allows users to interact with the network scheduler.
 
 There are some concepts associated with this whole architecture. There's qdiscs,
-classid, filter [^1].
+classes and filters [^1].
 But I won't go into details because that will bloat this post to another 10k words.
 
 For simplicity you can consider this:
@@ -49,11 +49,78 @@ driver: "Driver TX" {
 
 app -> kernel.stack
 kernel.qdisc -> driver
+```
+
+Here in this diagram, **filter** is a tc filter, Linux TC allows users to attach
+a ebpf program to a **filter** with something called the **direct-action** mode.
+Likewise **qdisc** stands for **q**ueue **disc**ipline like HTB ([hierarchy token bucket](https://linux.die.net/man/8/tc-htb)),
+which are queues with bandwidths.
+
+So the idea is: filter classifies the packets and sends it to qdiscs, which manage the
+bandwidth. You could for instance create two classes: 
+- `classid 1:10` with 30mbps bandwidth
+- `classid 1:20` with 70mbps bandwidth
+
+And then attach a bpf program as a filter which classifies
+packets to different classes.
+
+```kroki{type=d2}
+direction: right
+
+stack: "Stack" {
+    near: top-left
+}
+filter: "filter" {
+    bpf: "bpf.o"
+}
+qdisc: "qdisc" 
+class_lo: "class 1:10"
+class_hi: "class 1:20"
+driver: "Driver TX"
+
+stack -> filter -> qdisc
+
+qdisc -> class_lo
+qdisc -> class_hi
+
+class_lo -> driver
+class_hi -> driver
 
 ```
 
-Here in this diagram, **fiter** is a tc fiter, like HTB or [hierarchy token bucket](https://linux.die.net/man/8/tc-htb).
-Likewise **qdisc** is tc queue discipline, which are queues with bandwidths.
+## TC, in simpler terms
+Imagine you run a mail room at an airport where packages are loaded onto
+planes. Important medical supplies get shipped instantly,
+while regular online shopping packages wait if gets crowded.
+
+1. Qdisc is like conveyor belts: rules and structure for how packages wait in line.
+
+A smart qdisc (like HTB) is like installing a
+structured system of conveyor belts that allows you to slow down or prioritize
+certain mail. 
+
+2. Class is like mail bins. Within your smart mailing system, you want 
+different levels of service. You create classes.
+
+- Class A (Economy Bin): Given 30% of the total plane space (30 Mbps).
+- Class B (VIP Bin): Given 70% of the total plane space (70 Mbps).
+
+The qdisc owns these classes. A class is just a sub-queue with a
+specific bandwidth rule assigned to it.
+
+3. Filter is the mail sorter (or security guard). Packages arriving from the 
+city stack don't know where to go. They are just a big pile of boxes. Enter the filter.
+
+The filter stands at the entrance. It looks at the label of every
+single package passing by.
+
+If you use an eBPF program as a filter, the program retrieves the packet, reads the
+destination or the type of traffic (like checking the "SNI" to see if it's a
+Netflix video or a Zoom call), and slaps a colored sticker on it
+(`skb->priority`).
+
+> The filter reads the packet, matches it against a rule, and says:
+> "You go to the 70Mbps VIP bin!" or "You go to the 30Mbps Economy bin!"
 
 ## Classify SNI at egress
 
@@ -77,7 +144,7 @@ int classify(struct __sk_buff *skb)
      */
     __u32 *priority = bpf_map_lookup_elem(&flow_cache, &key);
     if (priority) {
-        skb->tc_classid = *priority;
+        skb->priority = *priority;
         return TC_ACT_OK;
     }
 
@@ -96,8 +163,8 @@ local tc     = require("tc")
 local action = require("linux.tc")
 
 local policy = {
-    ["netflix%.com"] = TC_H_MAKE(1, 10),
-    ["zoom%.com"] = TC_H_MAKE(1, 20),
+    ["netflix%.com"] = TC_H_MAKE(1, 0x10),
+    ["zoom%.com"] = TC_H_MAKE(1, 0x20),
 }
 
 local function filter_sni(ctx)
@@ -116,29 +183,29 @@ end
 tc.attach(filter_sni)
 ```
 
-3. This example uses `docker0` as the inteface, you can use your own interface.
+3. This example uses `eth0` as the interface, you can use your own interface.
 Create the following script and run it with sudo.
 It will create the actual tc classes and qdiscs attached to the interface:
 ```sh
 #!/bin/bash
 TC="tc"
-IF="docker0"
+IF="eth0"
 
-# clean up [any] existing root qdisc
+# clean up any existing root qdisc
 $TC qdisc del dev $IF root 2>/dev/null
 # create root HTB qdisc defaulting to class 1:10
 $TC qdisc add dev $IF root handle 1: htb default 10
 # create parent and leaf class
-$TC class add dev $IF parent 1: classid 1:1 htb rate 100mbit
-$TC class add dev $IF parent 1:1 classid 1:10 htb rate 30mbit prio 1
-$TC class add dev $IF parent 1:1 classid 1:20 htb rate 70mbit prio 2
+$TC class add dev $IF parent 1: classid 1:1 htb rate 100mbit ceil 100mbit
+$TC class add dev $IF parent 1:1 classid 1:10 htb rate 30mbit ceil 100mbit
+$TC class add dev $IF parent 1:1 classid 1:20 htb rate 70mbit ceil 100mbit
 
 $TC qdisc add dev $IF clsact
 ```
 
 4. Attach the eBPF classifier on egress:
 ```
-sudo tc filter add dev docker0 egress bpf da obj tc.o sec classifier
+sudo tc filter add dev eth0 egress bpf da obj tc.o sec classifier
 ```
 
 The whole process is documented [here](https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#sniclassify)
@@ -157,6 +224,8 @@ kfunc: "bpf_luatc_run()"
 
 lua: "sni.lua"
 qdisc: "TC Qdisc"
+class_hi: "class 1:20\nHIGH"
+class_lo: "class 1:10\nLOW"
 driver: "Driver TX"
 
 stack -> tc: struct sk_buff {
@@ -175,22 +244,25 @@ kfunc -> lua: invoke Lua {
     }
 }
 lua -> lua: parse SNI
-lua -> kfunc: skb->tc_classid = HIGH
+lua -> kfunc: skb->priority = HIGH
 kfunc -> tc
 tc -> qdisc
-qdisc -> driver
+qdisc -> class_lo
+qdisc -> class_hi
+class_lo -> driver
+class_hi -> driver
 ```
 
 ## Verify
 
 Watch the qdiscs in realtime.
 ```sh
-watch -n 1 tc -s class show dev docker0
+watch -n 1 tc -s class show dev eth0
 ```
 
-Generate some traffic usng curl.
+Generate some traffic using curl.
 ```sh
-docker run --rm -it alpine sh -c "apk add --no-cache curl && curl https://www.netflix.com > /dev/null"
+curl https://www.netflix.com > /dev/null"
 ```
 
 ---
