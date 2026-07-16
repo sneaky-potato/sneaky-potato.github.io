@@ -15,7 +15,7 @@ There is a userspace program with the [same name](https://man7.org/linux/man-pag
 which allows users to interact with the network scheduler.
 
 There are some concepts associated with this whole architecture. There's qdiscs,
-classid, filter.
+classid, filter [^1].
 But I won't go into details because that will bloat this post to another 10k words.
 
 For simplicity you can consider this:
@@ -77,7 +77,7 @@ int classify(struct __sk_buff *skb)
      */
     __u32 *priority = bpf_map_lookup_elem(&flow_cache, &key);
     if (priority) {
-        skb->priority = *priority;
+        skb->tc_classid = *priority;
         return TC_ACT_OK;
     }
 
@@ -106,7 +106,7 @@ local function filter_sni(ctx)
 
     for pattern, classid in pairs(policy) do
         if sni:match(pattern) then
-            skb.priority = classid
+            skb.classid = classid
             break
         end
     end
@@ -175,7 +175,7 @@ kfunc -> lua: invoke Lua {
     }
 }
 lua -> lua: parse SNI
-lua -> kfunc: skb.priority = HIGH
+lua -> kfunc: skb->tc_classid = HIGH
 kfunc -> tc
 tc -> qdisc
 qdisc -> driver
@@ -195,6 +195,5 @@ docker run --rm -it alpine sh -c "apk add --no-cache curl && curl https://www.ne
 
 ---
 
-[^1]: The eXpress Data Path: [Fast programmable packet processing in the operating system kernel](https://dl.acm.org/doi/10.1145/3281411.3281443)
-[^2]: [XDPLua](https://victornogueirario.github.io/xdplua/)
+[^1]: Whirl Offload | [Understanding tc “direct action” mode for BPF](https://qmonnet.github.io/whirl-offload/2020/04/11/tc-bpf-direct-action/)
 
