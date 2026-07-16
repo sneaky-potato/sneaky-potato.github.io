@@ -5,11 +5,27 @@
 <a href=https://tldp.org/HOWTO/Traffic-Control-HOWTO/intro.html><strong>T</strong>raffic <strong>C</strong>ontroller</a>.
 There is a userspace program with the <a href=https://man7.org/linux/man-pages/man8/tc.8.html>same name</a>
 which allows users to interact with the network scheduler.</p><p>There are some concepts associated with this whole architecture. There&rsquo;s qdiscs,
-classid, filter <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.
+classes and filters <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.
 But I won&rsquo;t go into details because that will bloat this post to another 10k words.</p><p>For simplicity you can consider this:</p><blockquote><p>XDP decides whether a packet should exist. TC decides how the packet should be treated.</p></blockquote><p>I&rsquo;d keep this simple and present you this architecture for the sake of this post.
 Consider the path of the packet on its journey outside the host (from application to network card,
-or as system admins would call it, <strong>egress</strong>):</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-0 src=/_14335537454661643172.svg><p>Here in this diagram, <strong>fiter</strong> is a tc fiter, like HTB or <a href=https://linux.die.net/man/8/tc-htb>hierarchy token bucket</a>.
-Likewise <strong>qdisc</strong> is tc queue discipline, which are queues with bandwidths.</p><h2 id=classify-sni-at-egress>Classify SNI at egress</h2><p>So my job was to extend Lunatik and have it interact with tc.</p><p>I added a similar kfunc called <code>bpf_luatc_run</code>
+or as system admins would call it, <strong>egress</strong>):</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-0 src=/_14335537454661643172.svg><p>Here in this diagram, <strong>filter</strong> is a tc filter, Linux TC allows users to attach
+a ebpf program to a <strong>filter</strong> with something called the <strong>direct-action</strong> mode.
+Likewise <strong>qdisc</strong> stands for <strong>q</strong>ueue <strong>disc</strong>ipline like HTB (<a href=https://linux.die.net/man/8/tc-htb>hierarchy token bucket</a>),
+which are queues with bandwidths.</p><p>So the idea is: filter classifies the packets and sends it to qdiscs, which manage the
+bandwidth. You could for instance create two classes:</p><ul><li><code>classid 1:10</code> with 30mbps bandwidth</li><li><code>classid 1:20</code> with 70mbps bandwidth</li></ul><p>And then attach a bpf program as a filter which classifies
+packets to different classes.</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-1 src=/_3217167308361961370.svg><h2 id=tc-in-simpler-terms>TC, in simpler terms</h2><p>Imagine you run a mail room at an airport where packages are loaded onto
+planes. Important medical supplies get shipped instantly,
+while regular online shopping packages wait if gets crowded.</p><ol><li>Qdisc is like conveyor belts: rules and structure for how packages wait in line.</li></ol><p>A smart qdisc (like HTB) is like installing a
+structured system of conveyor belts that allows you to slow down or prioritize
+certain mail.</p><ol start=2><li>Class is like mail bins. Within your smart mailing system, you want
+different levels of service. You create classes.</li></ol><ul><li>Class A (Economy Bin): Given 30% of the total plane space (30 Mbps).</li><li>Class B (VIP Bin): Given 70% of the total plane space (70 Mbps).</li></ul><p>The qdisc owns these classes. A class is just a sub-queue with a
+specific bandwidth rule assigned to it.</p><ol start=3><li>Filter is the mail sorter (or security guard). Packages arriving from the
+city stack don&rsquo;t know where to go. They are just a big pile of boxes. Enter the filter.</li></ol><p>The filter stands at the entrance. It looks at the label of every
+single package passing by.</p><p>If you use an eBPF program as a filter, the program retrieves the packet, reads the
+destination or the type of traffic (like checking the &ldquo;SNI&rdquo; to see if it&rsquo;s a
+Netflix video or a Zoom call), and slaps a colored sticker on it
+(<code>skb->priority</code>).</p><blockquote><p>The filter reads the packet, matches it against a rule, and says:
+&ldquo;You go to the 70Mbps VIP bin!&rdquo; or &ldquo;You go to the 30Mbps Economy bin!&rdquo;</p></blockquote><h2 id=classify-sni-at-egress>Classify SNI at egress</h2><p>So my job was to extend Lunatik and have it interact with tc.</p><p>I added a similar kfunc called <code>bpf_luatc_run</code>
 which operates on <code>struct sk_buff</code> and lets you write packet scheduling policies in Lua.
 We still need bpf layer and much like xdp, we need 2 files:</p><ol><li><code>tc.c</code>: eBPF program which calls a kfunc <code>bpf_luatc_run</code> defined in Lunatik.</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>extern</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>bpf_luatc_run</span>(<span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>key, ...) __ksym;
 </span></span><span style=display:flex><span>
@@ -24,7 +40,7 @@ We still need bpf layer and much like xdp, we need 2 files:</p><ol><li><code>tc.
 </span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
 </span></span><span style=display:flex><span>    __u32 <span style=color:#f92672>*</span>priority <span style=color:#f92672>=</span> <span style=color:#a6e22e>bpf_map_lookup_elem</span>(<span style=color:#f92672>&amp;</span>flow_cache, <span style=color:#f92672>&amp;</span>key);
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (priority) {
-</span></span><span style=display:flex><span>        skb<span style=color:#f92672>-&gt;</span>tc_classid <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>priority;
+</span></span><span style=display:flex><span>        skb<span style=color:#f92672>-&gt;</span>priority <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>priority;
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> TC_ACT_OK;
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>
@@ -39,8 +55,8 @@ We still need bpf layer and much like xdp, we need 2 files:</p><ol><li><code>tc.
 </span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> action <span style=color:#f92672>=</span> require(<span style=color:#e6db74>&#34;linux.tc&#34;</span>)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> policy <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;netflix%.com&#34;</span>] <span style=color:#f92672>=</span> TC_H_MAKE(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>10</span>),
-</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;zoom%.com&#34;</span>] <span style=color:#f92672>=</span> TC_H_MAKE(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>20</span>),
+</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;netflix%.com&#34;</span>] <span style=color:#f92672>=</span> TC_H_MAKE(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0x10</span>),
+</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;zoom%.com&#34;</span>] <span style=color:#f92672>=</span> TC_H_MAKE(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0x20</span>),
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>filter_sni</span>(ctx)
@@ -57,27 +73,27 @@ We still need bpf layer and much like xdp, we need 2 files:</p><ol><li><code>tc.
 </span></span><span style=display:flex><span><span style=color:#66d9ef>end</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>tc.attach(filter_sni)
-</span></span></code></pre></div><ol start=3><li>This example uses <code>docker0</code> as the inteface, you can use your own interface.
+</span></span></code></pre></div><ol start=3><li>This example uses <code>eth0</code> as the interface, you can use your own interface.
 Create the following script and run it with sudo.
 It will create the actual tc classes and qdiscs attached to the interface:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
 </span></span></span><span style=display:flex><span>TC<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;tc&#34;</span>
-</span></span><span style=display:flex><span>IF<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;docker0&#34;</span>
+</span></span><span style=display:flex><span>IF<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;eth0&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># clean up [any] existing root qdisc</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># clean up any existing root qdisc</span>
 </span></span><span style=display:flex><span>$TC qdisc del dev $IF root 2&gt;/dev/null
 </span></span><span style=display:flex><span><span style=color:#75715e># create root HTB qdisc defaulting to class 1:10</span>
 </span></span><span style=display:flex><span>$TC qdisc add dev $IF root handle 1: htb default <span style=color:#ae81ff>10</span>
 </span></span><span style=display:flex><span><span style=color:#75715e># create parent and leaf class</span>
-</span></span><span style=display:flex><span>$TC class add dev $IF parent 1: classid 1:1 htb rate 100mbit
-</span></span><span style=display:flex><span>$TC class add dev $IF parent 1:1 classid 1:10 htb rate 30mbit prio <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>$TC class add dev $IF parent 1:1 classid 1:20 htb rate 70mbit prio <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>$TC class add dev $IF parent 1: classid 1:1 htb rate 100mbit ceil 100mbit
+</span></span><span style=display:flex><span>$TC class add dev $IF parent 1:1 classid 1:10 htb rate 30mbit ceil 100mbit
+</span></span><span style=display:flex><span>$TC class add dev $IF parent 1:1 classid 1:20 htb rate 70mbit ceil 100mbit
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>$TC qdisc add dev $IF clsact
-</span></span></code></pre></div><ol start=4><li>Attach the eBPF classifier on egress:</li></ol><pre tabindex=0><code>sudo tc filter add dev docker0 egress bpf da obj tc.o sec classifier
+</span></span></code></pre></div><ol start=4><li>Attach the eBPF classifier on egress:</li></ol><pre tabindex=0><code>sudo tc filter add dev eth0 egress bpf da obj tc.o sec classifier
 </code></pre><p>The whole process is documented <a href=https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#sniclassify>here</a>
 The example is a low level packet classifier which assigns priorities based on domain names.</p><p>For this example, packets from <code>netflix.com</code> get a lower bandwidth (30%) and those from
-<code>zoom.com</code> get a higher bandwidth (70%).</p><p>Quite similar to the architecture presented in last post:</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-5 src=/_1387470233056382365.svg><h2 id=verify>Verify</h2><p>Watch the qdiscs in realtime.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>watch -n <span style=color:#ae81ff>1</span> tc -s class show dev docker0
-</span></span></code></pre></div><p>Generate some traffic usng curl.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>docker run --rm -it alpine sh -c <span style=color:#e6db74>&#34;apk add --no-cache curl &amp;&amp; curl https://www.netflix.com &gt; /dev/null&#34;</span>
-</span></span></code></pre></div><hr><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>Whirl Offload | <a href=https://qmonnet.github.io/whirl-offload/2020/04/11/tc-bpf-direct-action/>Understanding tc “direct action” mode for BPF</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div></article><script src=https://utteranc.es/client.js repo=sneaky-potato/sneaky-potato.github.io issue-term=pathname label=comment theme=github-light crossorigin=anonymous async></script></main></div><footer class=footer><span class=footer_item></span>&nbsp;<div class=footer_social-icons><a href=https://github.com/sneaky-potato target=_blank rel="noopener noreferrer me" title=Github><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><small class=footer_copyright>© 2026 Ashwani Kumar Kamal.
+<code>zoom.com</code> get a higher bandwidth (70%).</p><p>Quite similar to the architecture presented in last post:</p><img alt=diagram class="diagram diagram-kroki diagram-kroki-d2" id=h-rh-cb-kroki-6 src=/_17038722881209078012.svg><h2 id=verify>Verify</h2><p>Watch the qdiscs in realtime.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>watch -n <span style=color:#ae81ff>1</span> tc -s class show dev eth0
+</span></span></code></pre></div><p>Generate some traffic using curl.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>curl https://www.netflix.com &gt; /dev/null<span style=color:#e6db74>&#34;
+</span></span></span></code></pre></div><hr><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>Whirl Offload | <a href=https://qmonnet.github.io/whirl-offload/2020/04/11/tc-bpf-direct-action/>Understanding tc “direct action” mode for BPF</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div></article><script src=https://utteranc.es/client.js repo=sneaky-potato/sneaky-potato.github.io issue-term=pathname label=comment theme=github-light crossorigin=anonymous async></script></main></div><footer class=footer><span class=footer_item></span>&nbsp;<div class=footer_social-icons><a href=https://github.com/sneaky-potato target=_blank rel="noopener noreferrer me" title=Github><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><small class=footer_copyright>© 2026 Ashwani Kumar Kamal.
 Powered by <a href=https://github.com/hugo-sid/hugo-blog-awesome target=_blank rel=noopener>Hugo blog awesome</a>.</small></footer><a href=# title="Go to top" id=totop><svg width="48" height="48" fill="currentColor" stroke="currentColor" viewBox="0 96 960 960"><path d="M283 704.739 234.261 656 480 410.261 725.739 656 677 704.739l-197-197-197 197z"/></svg>
 </a><script src=https://sneaky-potato.github.io/js/main.min.35f435a5d8eac613c52daa28d8af544a4512337d3e95236e4a4978417b8dcb2f.js integrity="sha256-NfQ1pdjqxhPFLaoo2K9USkUSM30+lSNuSkl4QXuNyy8="></script></body></html>
