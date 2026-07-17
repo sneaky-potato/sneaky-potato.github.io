@@ -203,7 +203,7 @@ $TC class add dev $IF parent 1:1 classid 1:20 htb rate 70mbit ceil 100mbit
 $TC qdisc add dev $IF clsact
 ```
 
-4. Attach the eBPF classifier on egress:
+4. Attach the eBPF classifier on **egress** using the **direct-action** or **da** mode:
 ```
 sudo tc filter add dev eth0 egress bpf da obj tc.o sec classifier
 ```
@@ -262,7 +262,7 @@ watch -n 1 tc -s class show dev eth0
 
 Generate some traffic using curl.
 ```sh
-curl https://www.netflix.com > /dev/null"
+curl https://www.netflix.com > /dev/null
 ```
 
 ---
