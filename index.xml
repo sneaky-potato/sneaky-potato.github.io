@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Summer of Code 0x04: Sched Ext</title><link>https://sneaky-potato.github.io/oss/gsoc-05/</link><pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-05/</guid><description>&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Potato</title><link>https://sneaky-potato.github.io/</link><description>Recent content on Potato</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</managingEditor><webMaster>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</webMaster><lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sneaky-potato.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Summer of Code 0x04: sched_ext</title><link>https://sneaky-potato.github.io/oss/gsoc-05/</link><pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-05/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;Next natural step is task scheduling in Lua&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id="scheduler-class"&gt;Scheduler Class&lt;/h2&gt;
-&lt;p&gt;After XDP and TC, Linux has another low level subsystem, called Sched Ext or
+&lt;p&gt;After XDP and TC, Linux has another low level subsystem, called &lt;code&gt;sched_ext&lt;/code&gt; or
 &lt;a href="https://docs.kernel.org/scheduler/sched-ext.html"&gt;&lt;strong&gt;Ext&lt;/strong&gt;ensible &lt;strong&gt;Sched&lt;/strong&gt;uler Class&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;There is a concept of &lt;strong&gt;Scheduler class&lt;/strong&gt; in the kernel. The struct is defined in the
 source code at &lt;a href="https://github.com/torvalds/linux/blob/v5.5/kernel/sched/sched.h#L1702-L1760"&gt;linux/kernel/sched.h&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There are multiple scheduler &lt;strong&gt;classes&lt;/strong&gt; in Linux, for example:&lt;/p&gt;
+&lt;p&gt;There are multiple scheduler classes in Linux, for example:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;realtime scheduler class: &lt;a href="https://github.com/torvalds/linux/blob/v5.5/kernel/sched/rt.c#L2357-L2391"&gt;linux/kernel/sched/rt.c&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;completely fair scheduler class: &lt;a href="https://github.com/torvalds/linux/blob/v5.5/kernel/sched/fair.c#L10759-L10802"&gt;linux/kernel/sched/fair.c&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Linux kernel 6.12 introduced &lt;a href="https://sched-ext.com/"&gt;&lt;code&gt;sched_ext&lt;/code&gt;&lt;/a&gt; as a new scheduling class that allows
+&lt;p&gt;Linux kernel 6.12 introduced &lt;a href="https://sched-ext.com/"&gt;sched_ext&lt;/a&gt; as a new scheduling class that allows
 pluggable CPU schedulers via eBPF.&lt;/p&gt;</description></item><item><title>Google Summer of Code 0x04: TC</title><link>https://sneaky-potato.github.io/oss/gsoc-04/</link><pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate><author>ashwanikamal.im421@gmail.com (Ashwani Kumar Kamal)</author><guid>https://sneaky-potato.github.io/oss/gsoc-04/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;Time to do some packet scheduling in Lua&lt;/p&gt;
 &lt;/blockquote&gt;
