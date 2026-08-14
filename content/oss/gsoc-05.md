@@ -5,12 +5,17 @@ description: "open-source"
 tags: ["tech"]
 ---
 
-> Next natural step is task scheduling in Lua
+> Task scheduling in a dyanmic, garbage collected, interpreted language like
+> Lua
 
 ## Scheduler Class
 
-After XDP and TC, Linux has another low level subsystem, called `sched_ext` or
-[**Ext**ensible **Sched**uler Class](https://docs.kernel.org/scheduler/sched-ext.html).
+After adding XDP and TC bindings to Lunatik, the next subsystem is Linux's
+`sched_ext` or [**Ext**ensible
+**Sched**uler](https://docs.kernel.org/scheduler/sched-ext.html) Framework.
+Unlike XDP and TC, however, scheduling is extremely latency-sensitive, which
+makes running Lua code directly from the scheduling path an interesting
+problem.
 
 There is a concept of **Scheduler class** in the kernel. The struct is defined in the 
 source code at [linux/kernel/sched.h](https://github.com/torvalds/linux/blob/v5.5/kernel/sched/sched.h#L1702-L1760).
@@ -19,15 +24,15 @@ There are multiple scheduler classes in Linux, for example:
 - realtime scheduler class: [linux/kernel/sched/rt.c](https://github.com/torvalds/linux/blob/v5.5/kernel/sched/rt.c#L2357-L2391)
 - completely fair scheduler class: [linux/kernel/sched/fair.c](https://github.com/torvalds/linux/blob/v5.5/kernel/sched/fair.c#L10759-L10802)
 
-Linux kernel 6.12 introduced [sched_ext](https://sched-ext.com/) as a new scheduling class that allows
-pluggable CPU schedulers via eBPF.
+Linux kernel 6.12 introduced [sched_ext](https://sched-ext.com/) as a framework
+[^1] that allows pluggable custom CPU schedulers via eBPF. This enables
+implementing and dynamically loading thread schedulers. No need for recompiling
+the kernel and rebooting.
 
-Enables implementing and dynamically loading thread schedulers. No need for
-recompiling the kernel and rebooting.
-
-[sched-ext/scx](https://github.com/sched-ext/scx/) project is a collection of `sched_ext` schedulers and tools.
-Schedulers in scx range from simple demonstrative policies to
-production-oriented ones tailored for specific use cases:
+[sched-ext/scx](https://github.com/sched-ext/scx/) project is a collection of
+`sched_ext` schedulers and tools. Schedulers in scx range from simple
+demonstrative policies to production-oriented ones tailored for specific use
+cases:
 
 - scx_simple : basic FIFO or least-run-time policy
 - scx_nest : places tasks on high-frequency cores
@@ -39,9 +44,14 @@ production-oriented ones tailored for specific use cases:
 
 ## BPF Scheduler
 
-With `sched_ext` we can load schedulers during runtime using eBPF.
+As I already mentioned, with `sched_ext` we can load schedulers during runtime
+using eBPF. The important point is *eBPF* here. Because this means `sched_ext/scx` 
+schedulers are only extensible through eBPF. Much like XDP and TC. So we can go
+with a similar approach and add support for this via `luasched` a Lunatik
+binding for scheduling.
 
 ## Motivation
+
 Suppose we want:
 
 - Nginx workers to get low latency scheduling
@@ -61,7 +71,7 @@ There are two pain points:
 - Every change is in eBPF, and the eBPF code is a pain to write.
 - Every policy change requires recompilation.
 
-With luasched, the scheduler asks Lua how a task should be treated in *Lua*
+With `luasched`, the scheduler asks Lua how a task should be treated in *Lua*
 which is relatively simple to write.
 
 ```lua
@@ -82,6 +92,12 @@ sched.attach(schedule)
 ```
 
 ## Caching results
+
+Lua is a *dynamic*, *garbage collected*, *interpreted* language. These are
+some words which typically don't go together with a latency sensitive work
+like task scheduling. So we'd not want to invoke the Lua runtime each time
+a task gets enqueued for scheduling. We can design an architecture where we
+leverage the flexibility of Lua only when it is actually required.
 
 The following diagram summarizes the architecture described above:
 ```kroki{type=d2}
@@ -137,7 +153,7 @@ kfunc -> lua.policy: "invoke Lua" {
         animated: true
     }
 }
-lua.policy -> scheduler.insert: "return verdict\nDSQ+slice_ns" {
+lua.policy -> scheduler.insert: "DSQ+slice_ns" {
     style: {
         animated: true
     }
@@ -154,5 +170,5 @@ dsq.default -> cpu
 
 ---
 
-[^1]: Whirl Offload | [Understanding tc “direct action” mode for BPF](https://qmonnet.github.io/whirl-offload/2020/04/11/tc-bpf-direct-action/)
+[^1]: Phoronix | [Sched_ext Merged For Linux 6.12 - Scheduling Policies As BPF Programs](https://www.phoronix.com/news/Linux-6.12-Lands-sched-ext)
 
