@@ -1,5 +1,5 @@
 ---
-title: "Google Summer of Code: 0x02"
+title: "Google Summer of Code 0x02: Proposal"
 date: 2026-06-26
 description: "open-source"
 tags: ["tech"]

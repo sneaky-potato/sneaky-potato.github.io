@@ -1,5 +1,5 @@
 ---
-title: "Google Summer of Code: 0x03"
+title: "Google Summer of Code 0x03: XDP"
 date: 2026-07-03
 description: "open-source"
 tags: ["tech"]
