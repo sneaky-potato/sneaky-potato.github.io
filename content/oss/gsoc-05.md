@@ -99,6 +99,167 @@ like task scheduling. So we'd not want to invoke the Lua runtime each time
 a task gets enqueued for scheduling. We can design an architecture where we
 leverage the flexibility of Lua only when it is actually required.
 
+I designed the workflow like this:
+
+1. A `luasched` scheduling decision is defined as the pair `(dsq, slice)`.
+Both the values are related to a task which needs scheduling.
+
+Here `dsq` is the sched_ext queue to which the task needs dispatching.
+And `slice` is the time slice in nanoseconds which this task should get.
+
+Our binding needs to return these values to the eBPF program which will eventually
+call the scx dispatch function[^2] (which was later refactored as insert function[^3]).
+
+`scx_bpf_dsq_insert(struct task_struct *p, u64 dsq, u64 slice_ns, u64 enq_flags);`
+
+2. I added a kfunc similar to TC case for sched as well `bpf_luasched_run` which operates
+on `struct task_struct`. It lets you write scheduling policy in Lua. However bpf layer will still
+be needed.
+
+`scheduler.c`: We will write a basic sched_ext eBPF program, start by defining the important stuff.
+
+```c
+#define DSQ_REALTIME 0
+#define DSQ_BATCH    1
+#define DSQ_DEFAULT  2
+
+struct task_class {
+	u64 dsq;
+	u64 slice_ns;
+};
+
+static char runtime[] = "workload";
+
+extern int bpf_luasched_run(const char *key, size_t key__sz, 
+    struct task_struct *task, struct task_class *cls) __ksym;
+
+/* create 3 dispatch queue for this example */
+s32 BPF_STRUCT_OPS_SLEEPABLE(luasched_init)
+{
+    scx_bpf_create_dsq(DSQ_REALTIME, -1);
+	scx_bpf_create_dsq(DSQ_BATCH, -1);
+	scx_bpf_create_dsq(DSQ_DEFAULT, -1);
+	return 0;
+}
+```
+
+Next, define the dispatch policy, ours will be straight forward: schedule tasks from the queues
+in this order: `DSQ_REALTIME` -> `DSQ_BATCH` -> `DSQ_DEFAULT`
+
+```c
+void BPF_STRUCT_OPS(luasched_dispatch, s32 cpu, struct task_struct *prev)
+{
+	if (!scx_bpf_dsq_move_to_local(DSQ_REALTIME)) {
+		if (!scx_bpf_dsq_move_to_local(DSQ_BATCH)) {
+			scx_bpf_dsq_move_to_local(DSQ_DEFAULT);
+		}
+	}
+}
+```
+
+Now, the main enqueue logic which will use again use an eBPF map to cache the scheduling
+decision based on task PID.
+
+```c
+void BPF_STRUCT_OPS(luasched_enqueue, struct task_struct *p, u64 enq_flags)
+{
+	pid_t pid = p->pid;
+    /* check map for task PID */
+	struct task_class *cls = bpf_map_lookup_elem(&task_classes, &pid);
+	if (cls) {
+		scx_bpf_dsq_insert(p, cls->dsq, cls->slice_ns, enq_flags);
+		return;
+	}
+
+	struct task_class lua_cls = { 
+        .dsq = DSQ_DEFAULT, 
+        .slice_ns = SCX_SLICE_DFL
+    };
+
+    /* invoke Lua to get the scheduling decision */
+	int ret = bpf_luasched_run(runtime, sizeof(runtime), p, &lua_cls);
+
+	if (ret) {
+		lua_cls.dsq = DSQ_DEFAULT;
+		lua_cls.slice_ns = SCX_SLICE_DFL;
+	}
+
+    /* update the map once we know the scheduling decision from Lua */
+	bpf_map_update_elem(&task_classes, &pid, &lua_cls, BPF_ANY);
+	scx_bpf_dsq_insert(p, lua_cls.dsq, lua_cls.slice_ns, enq_flags);
+}
+```
+
+Next, we need a cleanup task to clear the cache when task is stopped.
+
+```c
+void BPF_STRUCT_OPS(luasched_exit_task, struct task_struct *p, struct scx_exit_task_args *args)
+{
+	pid_t pid = p->pid;
+	bpf_map_delete_elem(&task_classes, &pid);
+}
+```
+
+Finally wire everything up:
+```c
+SEC(".struct_ops")
+struct sched_ext_ops luasched_ops = {
+	.init       = (void *)luasched_init,
+	.dispatch   = (void *)luasched_dispatch,
+	.enqueue    = (void *)luasched_enqueue,
+	.exit_task  = (void *)luasched_exit_task,
+	.name       = "luasched",
+};
+```
+
+3. Now the second step: `workload.lua`
+```lua
+local sched = require("sched")
+local scx   = require("linux.scx")
+
+local REALTIME = 0
+local BATCH = 1
+local DEFAULT = 2
+
+local policy = {
+	{ pattern = "^nginx", dsq = REALTIME, slice = 1000000 }, -- 1ms
+	{ pattern = "^firefox", dsq = BATCH, slice = 10000000 }, -- 10ms
+}
+
+local function log(command, dsq, slice)
+	print(string.format("workload: [%s]: %d %d", command, dsq, slice))
+end
+
+local function workload(ctx)
+	local task = ctx:task()
+	for _, rule in ipairs(policy) do
+		if task:comm():match(rule.pattern) then
+			ctx:dsq(rule.dsq)
+			ctx:slice(rule.slice)
+			log(task:comm(), rule.dsq, rule.slice)
+			return
+		end
+	end
+	ctx:dsq(DEFAULT)
+	ctx:slice(scx.SLICE_DFL)
+end
+
+sched.attach(workload)
+```
+
+4. Now we are ready to spin up our own scheduler:
+```sh
+sudo bpftool struct_ops register scheduler.o /sys/fs/bpf/luasched
+```
+
+The whole process is documented [here](https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#workload-scheduler)
+Example is a low level scheduler which assigns dispatch queues and time slices
+based on task command names.
+
+For this example, tasks matching command name `nginx` get a high priority (`DSQ_REALTIME`) 
+and those matching `firefox` get a lower priority (`DSQ_BATCH`).
+
+
 The following diagram summarizes the architecture described above:
 ```kroki{type=d2}
 vars: {
@@ -171,4 +332,6 @@ dsq.default -> cpu
 ---
 
 [^1]: Phoronix | [Sched_ext Merged For Linux 6.12 - Scheduling Policies As BPF Programs](https://www.phoronix.com/news/Linux-6.12-Lands-sched-ext)
+[^2]: Linux source code v6.12 - Bootlin Elixir | [tools/sched_ext/include/scx/common.bpf.h](https://elixir.bootlin.com/linux/v6.12/source/tools/sched_ext/include/scx/common.bpf.h#L39)
+[^3]: Linux source code v7.2.2 - Bootlin Elixir | [tools/sched_ext/include/scx/compat.bpf.h](https://elixir.bootlin.com/linux/v7.2.2/source/tools/sched_ext/include/scx/compat.bpf.h#L356)
 
