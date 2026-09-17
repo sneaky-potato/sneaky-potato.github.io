@@ -252,8 +252,8 @@ sched.attach(workload)
 sudo bpftool struct_ops register scheduler.o /sys/fs/bpf/luasched
 ```
 
-The whole process is documented [here](https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#workload-scheduler)
-Example is a low level scheduler which assigns dispatch queues and time slices
+The whole process is documented [here](https://github.com/luainkernel/lunatik/tree/sneaky-potato/gsoc26#workload-scheduler).
+This example is a low level scheduler which assigns dispatch queues and time slices
 based on task command names.
 
 For this example, tasks matching command name `nginx` get a high priority (`DSQ_REALTIME`) 
