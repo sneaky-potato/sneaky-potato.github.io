@@ -117,12 +117,15 @@ directly where bpffs stores the pointer to `struct bpf_map`.
 
 I verified this approach via a kernel module POC [^2].
 ```c
-static int luabpf_map_open(lua_State *L)
+#include <linux/bpf.h>
+#include <linux/namei.h>
+#include <linux/fs.h>
+
+static struct bpf_map *luabpf_map_open(lua_State *L)
 {
     const char *path = luaL_checkstring(L, 1);
     struct path kpath;
     struct bpf_map *map;
-    struct bpf_map **udata;
     int err;
 
     err = kern_path(path, LOOKUP_FOLLOW, &kpath);
@@ -136,21 +139,43 @@ static int luabpf_map_open(lua_State *L)
         return luaL_error(L, "not a valid bpf map path");
 
     bpf_map_inc(map); // increase reference counter
-
-    udata = lua_newuserdata(L, sizeof(struct bpf_map *));
-    *udata = map;
-    luaL_setmetatable(L, "bpf.map");
-    return 1;
+    return map;
 }
 ```
 
-- `lookup(key)` on the map pointer will return the value stored in the map for the provided key. We can reuse `luadata` for the actual types.
+- `lookup(key)` on the map pointer will return the value stored in the map for the provided key.
 - `update(key, data)` on the map pointer will update the map for the provided key with the given data.
 - `delete(key)` on the map pointer will delete the key from the map.
 - Once we have the pointer to `struct bpf_map`, we could call kernel ops helpers defined [here](https://elixir.bootlin.com/linux/v6.19.2/source/include/linux/bpf.h#L106) to do lookup, update, delete.
 
+The final API after multiple reviews iterations, looks something like this:
+```lua
+local hash = require("bpf").hash
+local bpf = require("linux.bpf")
+
+local m = hash("/sys/fs/test_map")
+
+local info = m:info()
+print(string.format("info.type = %d", info.type))
+print(string.format("info.key_size = %d", info.key_size))
+print(string.format("info.value_size = %d", info.value_size))
+print(string.format("info.max_entries = %d", info.max_entries))
+
+print(m:lookup("foo"))
+
+m:update("foo", "baz", bpf.ANY)
+print(m:lookup("foo"))
+
+m:delete("foo")
+print(m:lookup("foo"))
+
+m:close()
+```
+
 #### Cleanup
-- `close()` will cleanup the map from Lua, and decrease the reference counter via [`bpf_map_put(struct bpf_map *map)`](https://elixir.bootlin.com/linux/v6.19.2/source/include/linux/bpf.h#L2521)
+`close()` will decrease the reference counter via [`bpf_map_put(struct bpf_map *map)`](https://elixir.bootlin.com/linux/v6.19.2/source/include/linux/bpf.h#L2521)
+so that no further operations may be done on the map pointer.
+
 ---
 
 [^1]: Maps - [eBPF docs](https://docs.ebpf.io/linux/concepts/maps/)

@@ -28,7 +28,7 @@ my engineering mostly because I was really lazy.
 
 I got a job through my campus placements, and after one year I decided to put in some time in open source
 and get a crack at this. I think most students do GSoC for the following reasons:
-- Money, $2000 is a nice thing to have for a student.
+- Money, is a nice thing to have for a student.
 - Credentials, GSoC on resume looks good.
 - Upskilling, you learn remote collaboration, best practices and deep tech.
 
